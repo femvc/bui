@@ -1,0 +1,127 @@
+/*
+ * cb-web
+ * Copyright 2010 Baidu Inc. All rights reserved.
+ * 
+ * path:    ui-dialog.css
+ * desc:    弹出层样式
+ * author:  zhaolei,erik
+ * date:    2010/04/01
+ */
+
+.ui-dialog {
+    background:#fff;
+    position:absolute;
+    z-index:1001;
+    width:800px;
+    border:1px solid #C1C1C1;
+    left:50%;
+    top:150px;
+}
+.ui-dialog-icon {
+    position:absolute;
+    top:5px;
+    left:5px;
+    background-image: url("../img/icon_file.gif");
+    background-position: left -1px;
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 18px;
+}
+.ui-dialog-close {
+    position:absolute;
+    top:5px;
+    right:5px;
+    cursor:pointer;
+    background-image: url("../img/sys_close.gif");
+    background-position: left -1px;
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 18px;
+}
+.ui-dialog-close-hover {
+    background-position: left -21px;
+}
+
+.ui-dialog-head {
+    background:#C7DEEC;
+    height:24px;
+}
+.ui-dialog-title {
+    color:#000;
+    font-size:9.5pt;
+    line-height:22px;
+    text-align:center;
+    background-image: url("../img/bg_page_head_normal.png");
+    background-position: center top;
+    height: 24px;
+}
+.ui-dialog-foot {
+    border-top:1px solid #C5DFF0;
+    background:#E6F3FB;
+    padding:10px;
+    zoom:1;
+}
+
+.ui-dialog-foot .ui-button {
+    margin-right:5px;
+}
+
+.ui-dialog-body {
+    padding:10px;
+    position:relative;
+    background-color:#F6F6F6;
+    color: #444444;
+    padding: 8px 14px 8px 15px;
+}
+
+.skin-dialognobodymargin .ui-dialog-body {
+    padding:0;
+}
+
+.ui-dialog-foot:after {
+    content:"\0020"; 
+    display:block;
+    height:0; 
+    visibility:hidden; 
+    clear:both;
+}
+
+.ui-dialog-icon {
+    width:16px;
+    height:15px;
+    overflow:hidden;
+    position:absolute;
+}
+
+.ui-dialog-icon-warning {
+    background:url(../img/BlockSprites.png) -109px -314px no-repeat;
+}
+
+.ui-dialog-icon-notice {
+    background:url("../img/BlockSprites.png") no-repeat scroll -141px -315px transparent;
+    height:17px;
+    width:14px;
+}
+
+.ui-dialog-text {
+    padding-left:23px;
+}
+
+.ui-dialog-custom-notice {
+    color:#E17800;
+    font-size:14px;
+    border-bottom:1px solid #c3d9ff;
+    margin-bottom:10px;
+    padding-bottom:10px;
+}
+
+.ui-dialog .form-title {
+    font-size: 12px;
+    height: 19px;
+    padding-top: 8px;
+ }
+ .ui-dialog .form-value {
+    clear:both;
+    margin-left: 0px;
+    padding-top: 2px;
+ }

@@ -1,0 +1,46 @@
+/*
+ * ESUI (Enterprise Simple UI)
+ * Copyright 2010 Baidu Inc. All rights reserved.
+ * 
+ * path:    ui-button.css
+ * desc:    按钮样式
+ * author:  erik, zhaolei
+ * date:    2011/01/19
+ */
+
+/**
+ * 基础按钮样式
+ */
+/* 表单验证提示 */
+.validate-error {
+    background:#FEF7DB;
+    border:1px solid #F0DDA5;
+    padding:5px;
+    padding-bottom:2px;
+    display:block;
+}
+
+.validate-error input {
+    border:1px solid #F0DDA5;
+}
+
+.validate {
+    position:relative;
+}
+.validate-text {
+    padding-left:22px;
+    display:block;
+    background:#fef7db;
+    color:#E17800;
+    line-height:24px;
+}
+
+.validate-icon {
+    position:absolute;
+    top:4px;
+    *top:-2px;
+    left:0;
+    width:16px;
+    height:16px;
+    background:#FEF7DB url(../img/BlockSprites.png) -125px -315px no-repeat;
+}

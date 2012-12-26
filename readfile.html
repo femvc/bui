@@ -1,0 +1,38 @@
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    <html xmlns="http://www.w3.org/1999/xhtml">  
+      
+    <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>Untitled 1</title>  
+    <script type="text/javascript">  
+    <!--
+    function doit(){  
+        //todo  
+        var xmlhttp=null;  
+        if(window.ActiveXObject){  
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");  
+        }else if (window.XMLHttpRequest){// code for all new browsers  
+            xmlhttp=new XMLHttpRequest();  
+        }  
+        if(xmlhttp!=null){  
+          xmlhttp.open("POST","vm/panel_start.htm",false);    
+          xmlhttp.send();  
+          alert(xmlhttp.responseText);    
+        }else {  
+          alert("Your browser does not support XMLHTTP.");  
+        }  
+      
+          
+    }  
+      
+    //–>  
+    </script>  
+    </head>  
+      
+    <body><button type="button" onclick="doit()">doit</button>  
+      
+    </body>  
+      
+    </html>  
+

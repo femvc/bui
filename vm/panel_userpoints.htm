@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${Product_name:lang}</title>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/drag.js"></script>
+<script type="text/javascript" src="common/js/table.sort.js"></script> 
+<script type="text/javascript">
+<!--
+function hideLoading(){
+    var body=document.getElementsByTagName("BODY")[0];
+    var html=document.getElementsByTagName("HTML")[0];
+    body.style.overflow="";
+    html.style.overflow="";
+    //bui.g("loading_div").style.display="none";
+    
+    var user_name,date;
+    try {user_name=getCookie("user_name");}
+    catch(e){}
+    
+    if(!user_name) user_name="";
+    //$("user_name").value=user_name;
+    //if(!!user_name) $("user_password").focus();
+    //else $("user_name").focus();
+} 
+window.onload=function(){
+    
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
+
+</head>
+
+<body style="">
+<!--target:userpoints-->
+
+
+<table cellpadding="0" class="page">
+    <tr>
+        <td style="vertical-align:top;">
+        <div class="page_container" style="">
+            <div class="page_head_normal">
+            
+            <table style="width:100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="dialog_head_left" style="">
+                    <span class="btn_win"><img alt="" src="common/img/icon_file.gif" /></span></td>
+                    <td class="dialog_head_center">${My_Account:lang} </td>
+                    <td class="dialog_head_right">
+                    <img alt="" src="common/img/win_min.gif" /><img alt="" src="common/img/win_max.gif" /><img alt="" src="common/img/win_close.gif" />
+                    </td>
+                </tr>
+            </table>
+            
+            </div>
+            <div class="page_body_normal">
+                <div class="page_body_content">
+                    <div>
+                    <div id="regbox_body" class="reg_box">
+                        <form action="userpoints" method="get" name="userinfo">
+                    
+                    <table style="width:100%" class="info_list">
+                        <tr>
+                            <td valign="top" class="left_link">
+                            <div class="panel_leftlink">
+                                <div class="panel_box_title">${Control_Panel:lang} </div>
+                                <div class="panel_box_content">
+                                    <ul>
+                                        <li><a href="#/userinfo">${Base_Info:lang}</a></li>
+                                        <li><a href="#/usercontact">${Contact:lang}</a></li>
+                                        <li><a href="#/changepsw">${Change_psw:lang}</a></li>
+                                        <li><a href="#/useraccount">${Security_question:lang}</a></li>
+                                        <li>&nbsp;<a style="display:none;" href="#/userpoints">${My_points:lang}</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            </td>
+                            <td class="myaccount_left">
+                            <div class="myaccount_title">
+                                ${My_points:lang} </div>
+                            <div  class="myaccount_content">
+                            <div style="padding-bottom:5px;">${You_can_use_points_to_buy:lang}<br/></div>
+                        <table class="table_container" cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                                <td>
+                                <table class="table_thead" cellspacing="0" cellpadding="0" width="100%">
+                                    <tr>
+                                            <th style="width:35px;cursor:pointer" onclick="sortTable('restore_table', 0);">${No1:lang}.</th>
+                                            <th style="width:150px;cursor:pointer" onclick="sortTable('restore_table', 1);">${Time:lang} </th>
+                                            <th style="width:80px;cursor:pointer" onclick="sortTable('restore_table', 2);">${Points:lang} </th>
+                                            <th style="width:120px;cursor:pointer" onclick="sortTable('restore_table', 3);">${Type:lang} </th>
+                                            <th>&nbsp;</th>
+                                    </tr>
+                                </table>
+                                <div class="table_tbody" id="listtable" style="height:247px;">
+                                    <table cellspacing="0" cellpadding="0" id="restore_table">
+                                        <tbody>
+                                        <tr class="tr_width">
+                                            <td style="width:35px"></td>
+                                            <td style="width:150px"></td>
+                                            <td style="width:80px"></td>
+                                            <td style="width:120px"></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        ${main_body} 
+                                        </tbody>
+                                        <tbody style="${display_none} ">
+                                            <tr createtime="20080726 08:10:10" active="1" word_or_sentence="0" wcount="3" name="20080606" sn="1">
+                                                <td>1</td>
+                                                <td>
+                                                <input readonly="" size="14" value="20080606" /></td>
+                                                <td>
+                                                <input readonly="" size="2" value="3" /></td>
+                                                <td>
+                                                <input readonly="" size="3" value="finished" /></td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="myaccount_content"><br/>${Note:lang} :${You_can_put_the_following_link_on_your_blog:lang}<br/>
+                    <textarea name="link" style=" width:480px;height:60px; margin-top:5px; overflow:auto; font-size:12px; font-family:Arial, Helvetica, sans-serif;">&lt;a href="http://www.5imemo.com/?sid=${sid}" title="Easy learn English, English learn easy."&gt;Five day, change your life.&lt;/a&gt;</textarea>
+                    </div>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    
+                                                <div style="clear: both;"></div>
+                            <input id="changeuserinfo" name="changeuserinfo" type="hidden" value="1" />
+                        </form>
+                    </div>
+                </div>
+                <div class="page_body_bottom">
+                    <div class="page_body_submit">
+                        &nbsp;
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="page_foot_normal">
+            <div class="comment" id="curlist_info">
+                <span class="cur_time">${Currently_Time:lang} : <span style="${display_none} ">2008/11/28 17:00</span><span id="cur_time">${cur_time} </span></span>
+
+
+                </div>
+        </div>
+    </div>
+        </td>
+    </tr>
+</table>
+<div class="quick_link"><font face="Arial, sans-serif" size="-1"><b>${user_name} </b> |
+<a href="#/">${Home:lang}</a>&nbsp;|
+<a href="#/userinfo">${My_Account:lang}</a>&nbsp;|
+<a href="#/login~type=exit">${Exit:lang}</a>&nbsp;
+</div>
+
+<!--target:blank-->
+<script type="text/javascript" src="common/js/haiyang.js"></script>
+${urlinfo} 
+
+<script type="text/javascript">
+<!--
+function delete_it()
+{
+    if(window.confirm("Did you really want to delete it?")) window.location.href='panel_notebook.php?fr=isNotebook&list_action=del&word_id='+curlist;
+}
+//-->
+</script>
+
+</body>
+
+</html>

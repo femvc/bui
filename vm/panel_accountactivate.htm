@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+ 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>${Product_name:lang}</title> 
+<link rel="stylesheet" type="text/css" href="common/css/style.css" /> 
+</head> 
+ 
+<body class="login"> 
+<!--target:activate--> 
+ 
+ 
+<table class="login_box" cellspacing="3" cellpadding="0"> 
+    <tr> 
+        <td class="login_box_td"> 
+                <table style="width:100%"> 
+                    <tr> 
+                        <td colspan="2">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                        <td colspan="2" align="center"> 
+                        <img alt="" src="common/img/logo.png" width="100" height="80" /> 
+                        <div class="login_title">${Activation:lang} </div></td> 
+                    </tr> 
+                    <tr> 
+                        <td class="item_title" style="width:160px">&nbsp;</td> 
+                        <td class="item_content">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                        <td class="item_title" style="width:160px">${SN_code:lang} :</td> 
+                        <td class="item_content"> 
+                        <input class="freetext_normal" type="text" id="sn_code" name="sn_code" value="${sn_code} " onblur="/*check_sn()*/" /> <div class="msg_err" id="sn_err" style="display:none;"> 
+                            Only contain Num&amp;Letter. </div>  
+                        </td> 
+                    </tr> 
+                    <tr style="${validate_display} "> 
+                        <td class="item_title" style="width:160px;vertical-align:top"> 
+                        ${Validate:lang} :</td> 
+                        <td> 
+                        <div> 
+                            <input class="freetext_normal" type="text" name="rand_num" ui="type:TextInput;id:rand_num;value:'';rule:notEmpty;rule:minLength,4,5" size="4" maxlength="4" />&nbsp; 
+                            <img alt="Unclear?Click image to refresh." src="randnum.png" class="rand_img" onclick="this.src='/code/image?'+Math.random()" />  
+                        </div> 
+                        </td> 
+                    </tr> 
+                    <tr> 
+                        <td class="item_title" style="width:160px">&nbsp;</td> 
+                        <td class="item_content"> 
+                        <input type="hidden" name="action_type" value="activate" /> 
+                        <input type="submit" value='${Next:lang} ' />&nbsp; 
+                        </td> 
+                    </tr> 
+                    <tr> 
+                        <td class="item_title" style="width:160px">&nbsp;</td> 
+                        <td class="item_content"><span id="err_msg" class="err_msg">${err_msg} </span></td> 
+                    </tr> 
+                    <tr> 
+                        <td class="item_title" style="width:160px">&nbsp;</td> 
+                        <td class="item_content">${Already_registered_Click_here:lang}  <a href="#/login">${Login:lang}</a>.</td> 
+                    </tr> 
+                </table> 
+ 
+        </td> 
+    </tr> 
+</table> 
+<div class="page_foot_normal" style=" visibility:hidden;"> 
+    <div class="comment" id="curlist_info"> 
+        <span class="cur_time">${Currently_Time:lang} : <span style="${display_none} "> 
+        2008/11/28 17:00</span><span id="cur_time">${cur_time} </span></span> 
+    </div> 
+</div> 
+ 
+<div class="quick_link"><font face="Arial, sans-serif" size="-1"><b>${username} </b> | 
+<a href="#/">${Home:lang}</a>&nbsp;| 
+<a href="#/userinfo">${My_Account:lang}</a>&nbsp;| 
+<a href="#/login~type=exit">${Exit:lang}</a>&nbsp;| 
+<a href="help.html">${Help:lang}</a>&nbsp; 
+</div> 
+ 
+<!--target:blank--> 
+
+ 
+</body> 
+ 
+</html> 

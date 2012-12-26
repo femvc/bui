@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${Product_name:lang}</title>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript">
+<!--
+function hideLoading(){
+    var body=document.getElementsByTagName("BODY")[0];
+    var html=document.getElementsByTagName("HTML")[0];
+    body.style.overflow="";
+    html.style.overflow="";
+    //bui.g("loading_div").style.display="none";
+    
+    var user_name,date;
+    try {user_name=getCookie("user_name");}
+    catch(e){}
+    
+    if(!user_name) user_name="";
+    //$("user_name").value=user_name;
+    //if(!!user_name) $("password").focus();
+    //else $("user_name").focus();
+} 
+window.onload=function(){
+    
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
+
+</head>
+
+<body style="">
+<!--target:changepsw-->
+
+
+<table cellpadding="0" class="page">
+    <tr>
+        <td style="vertical-align:top;">
+        <div class="page_container" style="">
+            <div class="page_head_normal">
+            
+            <table style="width:100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="dialog_head_left" style="">
+                    <span class="btn_win"><img alt="" src="common/img/icon_file.gif" /></span></td>
+                    <td class="dialog_head_center">${My_Account:lang} </td>
+                    <td class="dialog_head_right">
+                    <img alt="" src="common/img/win_min.gif" /><img alt="" src="common/img/win_max.gif" /><img alt="" src="common/img/win_close.gif" />
+                    </td>
+                </tr>
+            </table>
+            
+            </div>
+            <div class="page_body_normal">
+                <div class="page_body_content">
+                    <div>
+                    <div id="regbox_body" class="reg_box">
+
+                    
+                    <table style="width:100%" class="info_list">
+                        <tr>
+                            
+                            <td class="myaccount_left">
+                            <div class="myaccount_title">${Change_Password:lang} </div>
+                            <table class="myaccount_content" cellspacing="4">
+                                <tr id="old" style="display:none">
+                                    <td>${Old_Password:lang} :<span class="red">*</span></td>
+                                    <td>
+                                    <div><input type="password" class="freetext_normal" name="password_old" value="" size="40" ui="type:TextInput;id:password_old;value:;rule:notEmpty"  /></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">${New_Password:lang} :<span class="red">*</span></td>
+                                    <td>
+                                    <div><input type="password" class="freetext_normal" name="password_new" value="" size="40" ui="type:TextInput;id:password_new;value:;rule:notEmpty;rule:minLength,4"  /></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>${Password_Strength:lang} :<span class="red">*</span></td>
+                                    <td>
+                                    <table cellspacing="1" class="password_strength">
+                                        <tr id="password_strength" class="grade00">
+                                            <td class="a">&nbsp;</td>
+                                            <td class="b">&nbsp;</td>
+                                            <td class="c">&nbsp;</td>
+                                            <td class="d">&nbsp;</td>
+                                            <td class="e">&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>${Confirm_password:lang} :<span class="red">*</span></td>
+                                    <td>
+                                    <div><input type="password" class="freetext_normal" name="password_confirm" value="" size="40" ui="type:TextInput;id:password_confirm;value:;rule:notEmpty;rule:passwordVerify,password_new"  /></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">${err_msg} &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                    <div>
+                                        <button type="button" id="save">&nbsp;${Save:lang}&nbsp;</button>&nbsp;&nbsp;
+                                        <a href="javascript:" id="cancel">${Cancel:lang}</a>&nbsp;
+                                    </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    
+                            <div style="clear: both;"></div>
+                            
+                    </div>
+                </div>
+                <div class="page_body_bottom">
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="page_foot_normal">
+            <div class="comment" id="curlist_info">
+                <span class="cur_time">${Currently_Time:lang} : <span style="${display_none}">2008/11/28 17:00</span><span id="cur_time">${cur_time} </span></span>
+
+
+                </div>
+        </div>
+    </div>
+        </td>
+    </tr>
+</table>
+<div class="quick_link"><font face="Arial, sans-serif" size="-1"><b>${user_name} </b> |
+<a href="#/">${Home:lang}</a>&nbsp;|
+<a href="#/userinfo">${My_Account:lang}</a>&nbsp;|
+<a href="#/login~type=exit">${Exit:lang}</a>&nbsp;
+</div>
+
+<!--target:blank-->
+<script type="text/javascript" src="common/js/haiyang.js"></script>
+${urlinfo} 
+
+<script type="text/javascript">
+<!--
+function delete_it()
+{
+    if(window.confirm("Did you really want to delete it?")) 
+    window.location.href='panel_notebook.php?fr=isNotebook&list_action=del&word_id='+curlist;
+}
+
+function check_username(oChildNode){
+    var oNewNode;
+    if(!!oChildNode.waiting) {
+        oNewNode=oChildNode.waiting;
+    }
+    else {
+        oNewNode=document.createElement("SPAN");
+        oChildNode.waiting=oNewNode;
+        if(!oChildNode.nextSibling)
+            oChildNode.parentNode.appendChild(oNewNode);
+        else 
+            oChildNode.parentNode.insertBefore(oNewNode,oChildNode.nextSibling);
+    }
+    if(oChildNode.value.trim().length<1){
+        oNewNode.innerHTML='<span class="err_msg"></title>
+${User_Name_Cant_Be_Blank:lang} </span>';
+        return;
+    }
+    else
+        oNewNode.innerHTML='<span class="waiting"><img alt="Checking ..." src="common/img/waiting.gif" />${Checking:lang} </span>';
+    
+    
+    //var obj=$('user_name');
+    if(!oChildNode.ajax) {
+        oChildNode.ajax=new AJAX();
+        oChildNode.ajax.parseResults=function() {
+            window.setTimeout(function(){
+            if(oChildNode.ajax.xmlHttp.responseText.trim()=="0")
+                oNewNode.innerHTML='<span class="ok_msg"> OK</span>';
+            else oNewNode.innerHTML='<span class="err_msg"> Already exist.</span>';
+            },300);
+        }
+    }
+    oChildNode.ajax.doRequestUsingPOST("/5iremember/checkUserName.servlet?username="+oChildNode.value);
+}
+function check_password(oChildNode){
+    var oNewNode;
+    if(!!oChildNode.waiting) {
+        oNewNode=oChildNode.waiting;
+    }
+    else {
+        oNewNode=document.createElement("SPAN");
+        oChildNode.waiting=oNewNode;
+        if(!oChildNode.nextSibling)
+            oChildNode.parentNode.appendChild(oNewNode);
+        else 
+            oChildNode.parentNode.insertBefore(oNewNode,oChildNode.nextSibling);
+    }
+
+    if($("password_new").value.length<3)
+        oNewNode.innerHTML='<span class="err_msg"> Password too short.</span>';
+    else oNewNode.innerHTML='';
+    //else oNewNode.innerHTML='<span class="ok_msg"> OK</span>';
+    if($("password_confirm").value!=""&&$("password_new").value!=$("password_confirm").value) 
+    $("password_confirm").waiting.innerHTML='<span class="err_msg"> Twice differ.</span>';
+
+}
+function check_strength(oChildNode){
+    if(!oChildNode.strength) 
+        oChildNode.strength=$("password_strength");
+    oChildNode.strength.className="grade0" + getResult(oChildNode.value);
+}
+function check_email(oChildNode){
+    var re=/(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){0,126}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))/;
+    var oNewNode;
+    if(!!oChildNode.waiting) {
+        oNewNode=oChildNode.waiting;
+    }
+    else {
+        oNewNode=document.createElement("SPAN");
+        oChildNode.waiting=oNewNode;
+        if(!oChildNode.nextSibling)
+            oChildNode.parentNode.appendChild(oNewNode);
+        else 
+            oChildNode.parentNode.insertBefore(oNewNode,oChildNode.nextSibling);
+    }
+    
+    if(oChildNode.value.trim()==oChildNode.value.trim().match(re))
+        oNewNode.innerHTML='<span class="ok_msg"> OK</span>';
+    else oNewNode.innerHTML='<span class="err_msg"> Email is invalid.</span>';
+}
+function confirm_password(oChildNode){
+    var oNewNode;
+    if(!!oChildNode.waiting) {
+        oNewNode=oChildNode.waiting;
+    }
+    else {
+        oNewNode=document.createElement("SPAN");
+        oChildNode.waiting=oNewNode;
+        if(!oChildNode.nextSibling)
+            oChildNode.parentNode.appendChild(oNewNode);
+        else 
+            oChildNode.parentNode.insertBefore(oNewNode,oChildNode.nextSibling);
+    }
+
+    if($("password_confirm").value!=""&&$("password_new").value==$("password_confirm").value)
+        oNewNode.innerHTML='<span class="ok_msg"> OK</span>';
+    else if($("password_new").value!=$("password_confirm").value) 
+    oNewNode.innerHTML='<span class="err_msg"> Twice differ.</span>';
+
+}
+//-->
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>http</title>
+<script type="text/javascript">
+<!--
+var ls = [
+'vm/panel_login.htm',               
+'vm/panel_userinfo.htm',            
+'vm/panel_userpoints.htm',          
+'vm/panel_usercontact.htm',         
+'vm/panel_useraccount.htm',         
+'vm/panel_accountgetpsw.htm',       
+'vm/panel_accountgetpswresult.htm', 
+'vm/panel_accountactivate.htm',     
+'vm/panel_signup.htm',              
+'vm/panel_supplyusername.htm',      
+'vm/panel_supplyrandnum.htm',       
+'vm/panel_supplyanswer.htm',        
+'vm/panel_changepsw.htm'         
+
+];
+
+
+var xmlhttp;
+if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+}
+else{// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function ajax(url){
+    if (ls.length < 1) return;
+    if (!url) {
+        url = ls.pop();
+    }
+    if (xmlhttp!=null){
+        xmlhttp.open("POST",url,true);
+        xmlhttp.setRequestHeader("request_type","ajax");
+        xmlhttp.onreadystatechange=function(){
+            console.log(xmlhttp.readyState);
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            	ajax();
+                //bui.g("myDiv").innerHTML=xmlhttp.responseText;
+                
+            }
+        };
+        xmlhttp.send();
+        
+        //bui.g("myDiv").innerHTML=xmlhttp.responseText;
+    }
+    else
+    {
+    	alert("Your browser does not support XMLHTTP.");
+    }
+}
+//-->
+</script>
+</head>
+
+<body>
+123
+<button onclick="ajax()">button</button>
+<div id="myDiv">myDiv</div>
+</body>
+
+</html>

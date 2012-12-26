@@ -1,0 +1,19 @@
+{
+    "success":"true",
+    "message":{
+        "field":{}
+    },
+    "result":{
+        "user_id":"1",
+        "username":"haiyang5210",
+        "email":"haiyang5210@foxmail.com",
+        "birthday":"2012-03-31",
+        "introduction":"2",
+        "gender":"2",
+        "marry_status":"2",
+        "work_status":"3",
+        "wizard":"1",
+        "expiration":
+        "2013-04-21",
+    }
+}

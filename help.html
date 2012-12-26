@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Help</title>
+<script type="text/javascript" src="src/er/bui.js               "></script>
+<script type="text/javascript" src="src/er/controller.js        "></script>
+<script type="text/javascript" src="src/er/template.js          "></script>
+<script type="text/javascript" src="src/er/control.js           "></script>
+<script type="text/javascript" src="src/er/action.js            "></script>
+<script type="text/javascript" src="src/er/router.js            "></script>
+<script type="text/javascript" src="src/er/locator.js           "></script>
+<script type="text/javascript" src="src/er/init.js              "></script>
+</head>
+
+<body>
+<div>
+    <a href="#/hello~name=world">default</a> | <a href="#/hello~name=erik">erik</a> | <a href="#/hello~name=er">er</a>
+</div>
+<div id="Main"></div>
+<script>
+    
+    // 声明业务模块
+    var hello = {};
+    
+    //声明Action
+    hello.action = {
+        view: 'hello'
+    };
+    bui.Action.derive(hello.action);
+    
+    //配置路径
+    hello.config = {
+        'action': [
+            {
+                location: '/hello',
+                action: hello.action
+            }
+        ]
+    };
+    bui.Controller.addModule(hello);
+    
+    bui.Template.parseTemplate('<!-- target:hello -->hello ${name}');
+    //er.config.TEMPLATE_LIST = ['tpl.html'];
+    
+    window.onload = function () {
+        bui.init();
+    };
+</script>
+</body>
+</html>

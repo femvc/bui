@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+ 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>${Product_name:lang}</title> 
+<script type="text/javascript" src="common/js/common.js"></script> 
+<script type="text/javascript" src="common/js/drag.js"></script> 
+<script type="text/javascript" src="common/js/table.sort.js"></script> 
+<script type="text/javascript"> 
+<!-- 
+var No_Content_Please_Choose_Another='${No_Content_Please_Choose_Another:lang} '; 
+function hideLoading(){ 
+    var body=document.getElementsByTagName("BODY")[0]; 
+    var html=document.getElementsByTagName("HTML")[0]; 
+    body.style.overflow=""; 
+    html.style.overflow=""; 
+    //bui.g("loading_div").style.display="none"; 
+     
+    var user_name,date; 
+    try {user_name=getCookie("user_name");} 
+    catch(e){} 
+     
+    if(!user_name) user_name=""; 
+    //$("user_name").value=user_name; 
+    //if(!!user_name) $("user_password").focus(); 
+    //else $("user_name").focus(); 
+} 
+function editList(obj){ 
+    list=obj.parentNode.parentNode; 
+    $('listname').value=list.getAttribute('list_name'); 
+    $('dialog_title').innerHTML=$('dialog_title').getAttribute('type_edit'); 
+    $('action_type').value="edit"; 
+    $('list_name').value=list.getAttribute('list_name'); 
+    $('list_id').value=list.getAttribute('list_id'); 
+    $('in_package').checked=(list.getAttribute('in_package')==1?true:false); 
+    $('dialog_textarea_normal').value=Rows[0].getAttribute('comment'); 
+ 
+    box.Show(); 
+    $('listname').focus(); 
+} 
+var box,msgbox; 
+window.onload=function(){ 
+     
+     
+    var cur_tr=0; 
+    var date; 
+     
+    box=new LightBox("floatBox", "idOverlay", { Center: true }); 
+    msgbox=new LightBox("msgBox", "idOverlay", { Center: true }); 
+    msgbox.OverLay.Color="#fff"; 
+     
+    //msgbox.Show(); 
+     
+     
+     
+    var drag=new Drag("floatBox", "floatBoxHead", { mxContainer: document.documentElement, Lock: true }); 
+ 
+ 
+    $("close").onclick=function(){ box.Close(); }; 
+    $("cancel").onclick=function(){ box.Close(); }; 
+    $("msg_close").onclick=function(){ msgbox.Close(); }; 
+    $("yes").onclick=function(){ box.Close(); return true; }; 
+     
+     
+    $("add_list").onclick=function(){  
+        var obj=$('dialog_title'); 
+        $('dialog_title').innerHTML=obj.getAttribute('type_add'); 
+        $('action_type').value="add"; 
+        $('list_name').value=""; 
+        $('list_id').value=""; 
+        box.Show();  
+        $('listname').value=""; 
+        $('in_package').checked=false; 
+        $('dialog_textarea_normal').value=""; 
+        $('listname').focus(); 
+    }; 
+ 
+    $("delete_list").onclick=function(){  
+        if(Rows.length<1) {alert('I18n.getStr("Please_select_a_list_to_edit") .');return;} 
+         
+        if(window.confirm("${Are_you_sure_want_to_delete_List:lang}  \""+Rows[0].getAttribute('list_name')+"\"?")) 
+        this.href="#/?action_type=delete&list_id="+Rows[0].getAttribute('list_id') + "&list_name="+Rows[0].getAttribute('list_name'); 
+        return true; 
+    }; 
+     
+    $("start_learn").onclick=function(){ 
+        if(Rows[0].list_length<1) alert(No_Content_Please_Choose_Another); 
+        else window.location.href='learn.action?list_id='+curlist; 
+    }; 
+     
+    $("start_test").onclick=function(){  
+        if(Rows[0].list_length<1) alert(No_Content_Please_Choose_Another); 
+        else window.location.href='test.action?list_id='+curlist; 
+    }; 
+ 
+}; 
+ 
+//--> 
+</script> 
+<script type="text/javascript" src="common/js/haiyang.js"></script> 
+ 
+ 
+<style type="text/css"> 
+.lightbox{width:300px;background:#FFFFFF; top:20%; left:20%;border:1px solid #ccc;line-height:25px; margin:0;} 
+.lightbox dt{background:#f4f4f4; padding:5px; cursor:move;} 
+</style> 
+<link rel="stylesheet" type="text/css" href="common/css/style.css" /> 
+</head> 
+ 
+<body style=""> 
+<!--target:startIndex--> 
+ 
+ 
+<div id="idOverlay"></div> 
+ 
+<table cellpadding="0" class="page"> 
+    <tr> 
+        <td style="vertical-align:top;"> 
+        <div class="page_container" style=""> 
+            <div class="page_head_index"> 
+                <div class="logo_title">${Product_name:lang} </div></div> 
+            <div class="page_body_index"> 
+                 
+                <div class="page_body_content"> 
+                    <div> 
+                        <div ui="type:Table;id:userWordsList;keyField:list_id;fields:@listFields;datasource:@usersWordsLists;select:multi;sortable:true;bodyHeight:300;"></div> 
+                    </div> 
+                </div> 
+                <div class="page_body_bottom"> 
+                    <div class="page_body_submit"> 
+                        <div class="right_link"> 
+                        <a href="javascript:" id="add_list"><span>${Add_List:lang}</span></a>&nbsp; 
+                        <a href="javascript:" id="delete_list"><span>${Delete_List:lang}</span></a>&nbsp; 
+                        <a href="#/fromfile~list_id=NaN"><span>${Load_Words_from_Text:lang}</span></a>&nbsp; 
+                        </div> 
+                        <input type="button" disabled="disabled" id="start_learn" value="${Start_Learn:lang} " /> 
+                        <input type="button" disabled="disabled" id="start_test" value="${Start_Test:lang} " /> 
+                    </div> 
+                </div> 
+                <div class="quick_tool"> 
+                    <table> 
+                        <tr> 
+                            <td><a href="#/learn~date=today&type=review"> 
+                            <img src="common/img/icon_memory.gif" alt="" /><br /> 
+                            <span>${Start_Review:lang}</span></a> </td> 
+                            <td><a href="#/viewdetail~date=all"> 
+                            <img src="common/img/icon_brain.gif" alt="" /><br /> 
+                            <span>${My_Memory:lang}</span></a> </td> 
+                            <td><a href="#/plan"> 
+                            <img src="common/img/icon_plan.gif" alt="" /><br /> 
+                            <span>${Learn_Plan:lang}</span></a> </td> 
+                            <td><a href="#/packages"> 
+                            <img src="common/img/icon_dict.gif" alt="" /><br /> 
+                            <span>${My_Package:lang}</span></a> </td> 
+                            <td><a href="#/learnhistory"> 
+                            <img src="common/img/icon_game.gif" alt="" /><br /> 
+                            <span>${Learn_History:lang}</span></a> </td> 
+                            <td><a href="#/testhistory"> 
+                            <img src="common/img/icon_option.gif" alt="" /><br /> 
+                            <span>${Test_History:lang}</span></a> </td> 
+                            <td style="display:none;"><a href="panel_tools.php"> 
+                            <img src="common/img/icon_key.gif" alt="" /><br /> 
+                            <span>${My_Tools:lang}</span></a> </td> 
+                            <td><a href="#/step01"> 
+                            <img src="common/img/icon_restart2.gif" alt="" /><br /> 
+                            <span>${Start_Wizard:lang}</span></a> </td> 
+                             
+                        </tr> 
+                    </table> 
+                </div> 
+            </div> 
+            <div class="page_foot_normal"> 
+                <div class="comment" id="curlist_info"> 
+                    <span class="cur_time">${Currently_Time:lang} : <span style="${display_none} ">2008/11/28 17:00</span><span id="cur_time">${cur_time} </span></span> 
+ 
+ 
+                    </div> 
+            </div> 
+        </div> 
+        </td> 
+    </tr> 
+</table> 
+<div class="quick_link"><font face="Arial, sans-serif" size="-1"><b>${user_name} </b> | 
+<a href="#/">${Home:lang}</a>&nbsp;| 
+<a href="#/userinfo">${My_Account:lang}</a>&nbsp;| 
+<a href="#/login~type=exit">${Exit:lang}</a>&nbsp;| 
+<a href="help.html">${Help:lang}</a>&nbsp; 
+</div> 
+<br /> 
+ 
+<!--target:blank--> 
+<div id="floatBox" class="floatBox"> 
+    <div class="page_head_normal"> 
+             
+            <table id="floatBoxHead" style="width:100%" cellspacing="0" cellpadding="0"> 
+                <tr> 
+                    <td class="dialog_head_left" style=""> 
+                    <span class="btn_win"><img alt="" src="common/img/icon_file.gif" /></span></td> 
+                    <td class="dialog_head_center" id="dialog_title" type_add='${Add_New_List:lang} ' type_edit='${Edit_List:lang} '>&nbsp;</td> 
+                    <td class="dialog_head_right"><a id="close" href="javascript:">${close}</a></td> 
+                </tr> 
+            </table> 
+             
+    </div> 
+    <div class="content"> 
+        <form method="get" action="#/"> 
+        <div class="dialog_item_title">${List_Name:lang} :&nbsp;&nbsp;&nbsp;<span><input type="checkbox" name="in_package" id="in_package" value="on" /><label for="in_package">${To_package:lang} </label></span></div> 
+        <div><input class="dialog_freetext_normal"  name="list_name_new" type="text" value="${list_name_new} " id="listname" /></div> 
+        <div id="insertinfo">${insertinfo} </div> 
+        <div style="display:none;" class="dialog_item_title">${List_Status:lang} :</div> 
+        <div style="display:none;"> 
+            <select size="1" name="list_status" id="list_status"> 
+            <option value="0" selected="selected" >${Non_learned:lang} </option> 
+            <option value="1" >${Learned:lang} </option> 
+            </select> 
+        </div> 
+        <div class="dialog_item_title">${Comment:lang} :</div> 
+        <div><textarea class="dialog_textarea_normal" id="dialog_textarea_normal" name="comment" cols="20" rows="6"></textarea></div> 
+         
+        <div class="form_action"> 
+            <input class="btn_normal" id="yes" type="submit" value='&nbsp;&nbsp;${Save:lang} &nbsp;&nbsp;' /> 
+            <input class="btn_normal" id="cancel" type="button" value='${Cancel:lang} ' /> 
+            <input type="hidden" class="btn_normal" id="action_type" name="action_type" value="add" /> 
+            <input type="hidden" class="btn_normal" id="list_id" name="list_id"  value="" /> 
+            <input type="hidden" class="btn_normal" id="list_name" name="list_name" value="" /> 
+             
+        </div> 
+        </form> 
+    </div> 
+</div> 
+ 
+<div id="msgBox" class="floatBox"> 
+    <div class="page_head_normal"> 
+        <table style="width:100%" cellspacing="0" cellpadding="0"> 
+            <tr> 
+                <td class="dialog_head_left" style=""> 
+                <span class="btn_win"><img alt="" src="common/img/icon_file.gif" /></span></td> 
+                <td class="dialog_head_center" id="dialog_title">${Message_Box:lang} </td> 
+                <td class="dialog_head_right"><a id="msg_close" href="javascript:">${close}</a></td> 
+            </tr> 
+        </table> 
+    </div> 
+    <div class="content"> 
+        <div><textarea class="dialog_textarea_normal" name="TextArea1" cols="20" rows="6">${msg_box} </textarea></div> 
+    </div> 
+ 
+</div> 
+ 
+ 
+ 
+${urlinfo} 
+<!--target:blank--> 
+</body> 
+ 
+</html> 

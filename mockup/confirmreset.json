@@ -1,0 +1,9 @@
+{
+	"success":"true",
+	"message":[],
+	"result":{
+        "reset_type":"username",
+        "username":"haiyang5210",
+        "question":"What is you father's birth place?"
+    }
+}

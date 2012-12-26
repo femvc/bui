@@ -1,0 +1,254 @@
+
+.ui-floatcolorpalette-foot {
+    width: 240px;
+    left: 320px;
+    position: absolute;
+    top: 250px;
+}
+.ui-floatcolorpalette-foot .ui-button-label {
+    margin-left: 15px;
+}
+.ui-floatcolorpalette {
+    width: 200px;
+}
+.ui-floatcolorpalette-layer {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D3DDE9;
+    color: #567BA0;
+    padding: 5px;
+    position: absolute;
+    text-align: left;
+    width: 565px;
+    z-index: 2001;
+}
+.ui-floatcolorpalette-point {
+   border:1px solid #999;
+   width: 19px;
+   height: 19px;
+   cursor: pointer;
+   float: left;
+}
+.ui-colorpicker {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.ui-colorpicker table {
+    border-collapse: separate;
+    color: #000000;
+    cursor: default;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    vertical-align: baseline;
+    white-space: nowrap;
+    width: auto;
+}
+.ui-colorpicker a:link, .ui-colorpicker a:visited, .ui-colorpicker a:hover, .ui-colorpicker a:active {
+    color: #000000;
+    cursor: pointer;
+    font-weight: normal;
+    text-decoration: none;
+}
+.ui-colorpicker-color {
+    border: 1px solid #333;
+    display: block;
+    height: 13px;
+    overflow: hidden;
+    width: 21px;
+}
+.ui-colorpicker-morecolorbutton {
+    border: 1px solid #FFFFFF;
+    cursor: default;
+    font-size: 11px;
+    margin: 1px;
+    padding: 2px;
+    text-align: center;
+}
+.ui-colorpicker-morecolorbutton-hover {
+    background: url("../css/ui-colorpicker.png") repeat-x scroll 0 -560px #222222;
+    border: 1px solid #222222;
+}
+.ui-colorpalette {
+    background: url("../css/u36_original.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    font-family: Arial,Helvetica,sans-serif;
+    height: 282px;
+    overflow: hidden;
+    position: relative;
+    width: 562px;
+}
+.ui-colorpalette-pad {
+    background: none repeat scroll 0 0 #FF0000;
+    cursor: crosshair;
+    height: 256px;
+    left: 12px;
+    overflow: hidden;
+    position: absolute;
+    top: 12px;
+    width: 256px;
+}
+.ui-colorpalette-cover {
+    background: url("../css/filter.png") repeat scroll 0 0 transparent;
+    height: 256px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 256px;
+}
+.ui-colorpalette-padDot {
+    background: url("../css/ui-colorpicker.png") repeat-x scroll 0 -200px transparent;
+    height: 11px;
+    left: 0;
+    margin: -5px 0 0 -5px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 11px;
+    z-index: 1000;
+}
+.ui-colorpalette-sliderMain {
+    height: 265px;
+    left: 278px;
+    position: absolute;
+    top: 7px;
+    width: 38px;
+    cursor: defaut;
+}
+.ui-colorpalette-sliderMain .ui-slider {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+.ui-colorpalette-sliderMain .ui-slider-thumb {
+    background: url("../css/ui-colorpicker.png") repeat-x scroll -40px -200px transparent;
+    cursor: n-resize;
+    height: 9px;
+    overflow: hidden;
+    width: 38px;
+}
+
+.ui-colorpalette-colorShow {
+    left: 325px;
+    position: absolute;
+    top: 168px;
+}
+
+.ui-colorpalette-colorHexThumb {
+    height: 80px;
+    width: 75px;
+}
+
+.ui-colorpalette-colorThumb {
+    height: 48px;
+    width: 75px;
+}
+.ui-colorpalette-colorHexValue {
+    height: 22px;
+    margin-top: 5px;
+}
+.ui-colorpalette-colorHSBRGBShow span {
+    position: absolute;
+}
+.ui-colorpalette-rgbR {
+    left: 200px;
+    top: 0px;
+}
+.ui-colorpalette-rgbG {
+    left: 200px;
+    top: 23px;
+}
+.ui-colorpalette-rgbB {
+    left: 200px;
+    top: 48px;
+}
+.ui-colorpalette-HbsH {
+    left: 132px;
+    top: 0px;
+}
+.ui-colorpalette-HbsS{
+    left: 132px;
+    top: 23px;
+}
+.ui-colorpalette-HbsB  {
+    left: 132px;
+    top: 48px;
+}
+
+.ui-colorpalette-colorPickerMain {
+    left: 320px;
+    position: absolute;
+    top: 30px;
+    width: 230px;
+}
+
+.ui-dialog {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 2px solid #A8B9EB;
+    color: #333333;
+}
+.ui-dialog-title {
+    background: none repeat scroll 0 0 #C7DEEC;
+    border-bottom: 1px solid #9EC9E9;
+    border-top: 1px solid #DCEAF3;
+    cursor: move;
+    height: 27px;
+}
+.ui-dialog-title-inner {
+    color: #336699;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 27px;
+    padding-left: 12px;
+}
+.ui-dialog-content {
+    font-size: 12px;
+    height: auto;
+    position: relative;
+}
+.ui-dialog-footer {
+    background: none repeat scroll 0 0 #E6F3FB;
+    border-top: 1px solid #C5DFF0;
+    height: 20px;
+    padding: 4px;
+}
+.ui-dialog-titletext {
+    line-height: 24px;
+    margin: 0 10px;
+}
+.ui-dialog-close {
+    background: url("../css/ui-colorpicker.png") repeat-x scroll -120px -200px transparent;
+    cursor: pointer;
+    height: 19px;
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    width: 19px;
+}
+.ui-dialog-cancel, .ui-dialog-accept {
+    color: #35608C;
+    cursor: pointer;
+    font-family: STHeiti,SimSun;
+    font-size: 12px;
+    font-weight: 700;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    text-align: center;
+    width: 40px;
+}
+.ui-dialog-cancel {
+    margin-left: 50px;
+}
+
+.ui-floatcolorpalette-input {
+    padding:1px 2px;
+    font-size:12px;
+    background:#FFF;
+    text-align:left;
+    border:1px solid #7E9DB9;
+    font-family:STHeiti, SimSun;
+    width: 50px;
+    height: 16px;
+    line-height: 14px;
+}

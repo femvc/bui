@@ -1,0 +1,47 @@
+<!-- target:MultiSelectWrap -->
+    <div id="EnableEdit" class="multi-select-editable">
+        <div class="multi-select-selector">
+            <!-- import:SelectedTable -->
+            <!-- import:SourceTable -->
+            <!-- import:SelectIcon -->
+        </div>
+    </div>
+
+
+<!-- target:SourceTable -->
+<div class="source-table">
+    <div class="list-table-head">
+        <div class="list-table-headcntr">
+            <h4 class="">${sourceTableTitle}</h4>
+        </div>
+    </div>
+    <div class="list-table-body">
+       <div ui="type:Table;id:sourceListTable;sortable:true;fields:@sourceListFields;datasource:@sourceListDatasource;bodyHeight:210;"></div>
+    </div>
+    <div class="list-table-footwrap">
+        <div class="list-table-foot">
+            <div class="list-table-info">
+                <span class="table-sumary" ui="type:Label;id:sourceListInfo;text:;"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- target:SelectIcon -->
+<div class="multi-select-transfer">
+<span class="multi-select-transfer-icon"></span>
+</div>
+
+<!-- target:SelectedTable -->
+<div class="selected-table">
+    <div class="list-table-head"><div class="list-table-headcntr">
+        <h4 class="">${selectedTableTitle}</h4>
+    </div></div>
+    <div class="list-table-body">
+        <div ui="type:Table;id:selectedListTable;sortable:true;fields:@selectedListFields;datasource:@selectedItemList;bodyHeight:210;"></div>
+    </div>
+    <div class="list-table-footwrap">
+        <div class="list-table-foot"><span class="multi-select-selinfo"><span ui="type:Label;id:labelSelectedCount;text:;"></span></span></div>
+    </div>
+</div>
+

@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${Product_name:lang}</title>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/drag.js"></script>
+<script type="text/javascript" src="common/js/table.sort.js"></script> 
+<script type="text/javascript">
+<!--
+function hideLoading(){
+    var body=document.getElementsByTagName("BODY")[0];
+    var html=document.getElementsByTagName("HTML")[0];
+    body.style.overflow="";
+    html.style.overflow="";
+    //bui.g("loading_div").style.display="none";
+    
+    var username,date;
+    try {username=getCookie("username");}
+    catch(e){}
+    
+    if(!username) username="";
+    //$("username").value=username;
+    //if(!!username) $("user_password").focus();
+    //else $("username").focus();
+} 
+window.onload=function(){
+    
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
+
+</head>
+
+<body style="">
+<!--target:userinfo-->
+
+
+<table cellpadding="0" class="page">
+    <tr>
+        <td style="vertical-align:top;">
+        <div class="page_container" style="">
+            <div class="page_head_normal">
+            
+            <table style="width:100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="dialog_head_left" style="">
+                    <span class="btn_win"><img alt="" src="common/img/icon_file.gif" /></span></td>
+                    <td class="dialog_head_center">${My_Account:lang} </td>
+                    <td class="dialog_head_right">
+                    <img alt="" src="common/img/win_min.gif" /><img alt="" src="common/img/win_max.gif" /><img alt="" src="common/img/win_close.gif" />
+                    </td>
+                </tr>
+            </table>
+            
+            </div>
+            <div class="page_body_normal">
+                <div class="page_body_content">
+                    <div>
+                    <div id="regbox_body" class="reg_box">
+
+                    
+                    <table style="width:100%" class="info_list">
+                        <tr>
+                            <td valign="top" class="left_link">
+                            <div class="panel_leftlink">
+                                <div class="panel_box_title">${Control_Panel:lang} </div>
+                                <div class="panel_box_content">
+                                    <ul>
+                                        <li><a href="#/userinfo">${Base_Info:lang}</a></li>
+                                        <li><a href="#/usercontact">${Contact:lang}</a></li>
+                                        <li><a href="#/changepsw">${Change_psw:lang}</a></li>
+                                        <li><a href="#/useraccount">${Security_question:lang}</a></li>
+                                        <li>&nbsp;<a style="display:none;" href="#/userpoints">${My_points:lang}</a></li>
+
+                                    </ul>
+                                </div>
+                                <br/>
+                                <div class="expiration_time">${Expired_until:lang}:<br/><span class="date" id="expired_until"></span></div>
+                            </div>
+                            </td>
+                            <td class="myaccount_left">
+                            <div class="right_button">
+                                
+                            </div>
+                            <div class="myaccount_title">${Base_Info:lang} </div>
+                            <table class="myaccount_content"  cellspacing="5">
+                                <tr>
+                                    <td width="35%">${Username:lang} :<span class="red">*</span></td>
+                                    <td><b id="username">${username}</b></td>
+                                </tr>
+                                <tr>
+                                    <td>${Female_Male:lang} :</td>
+                                    <td>
+                                    <div>
+                                        <select id="gender" name="gender">
+                                            <option value="0">choose</option>
+                                            <option value="1" >${Female:lang} </option>
+                                            <option value="2" >${Male:lang} </option>
+                                        </select>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>${Birthday:lang} :</td>
+                                    <td><div><input class="freetext_normal" id="birthday" name="birthday" size="30" ui="type:TextInput;id:birthday;value:@birthday;rule:birthday" /> </div></td>
+                                </tr>
+                                <tr>
+                                    <td>${Email:lang} :<span class="red">*</span></td>
+                                    <td><div><input class="freetext_normal" id="email" name="email" value="" size="40" ui="type:TextInput;id:email;value:@email;rule:email"  /></div></td>
+                                </tr>
+                                <tr>
+                                    <td>${Work_Status:lang} :</td>
+                                    <td>
+                                    <div>
+                                        <select id="work_status" name="work_status">
+                                            <option value="0">choose</option>
+                                            <option value="1" >${Worker:lang} </option>
+                                            <option value="2" >${Student:lang}</option>
+                                            <option value="3" >${Other:lang} </option>
+                                        </select>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>${Marry_Status:lang} :</td>
+                                    <td>
+                                    <span>
+                                    <select id="marry_status" name="marry_status">
+                                    <option value="0">choose</option>
+                                    <option value="1" >${Bachelor:lang} </option>
+                                    <option value="2" >${In_loving:lang} </option>
+                                    <option value="3" >${Espousal:lang} </option>
+                                    <option value="4" >${Married:lang} </option>
+                                    <option value="5" >${Divorced:lang} </option>
+                                    </select>
+                                    </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:5px;vertical-align:top;">${Self_Introduction:lang} :</td>
+                                    <td><textarea class="textarea_normal" id="introduction" name="introduction" rows="3" cols="30" ui="type:TextInput;id:introduction;value:@introduction">hehe</textarea></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><input type="checkbox" name="wizard" id="wizard" ui="type:Checkbox;id:wizard;value:'1'"  />
+                                    Don't start Wizard when login. 
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><button type="button" id="save">&nbsp;${Save:lang}&nbsp;</button></td>
+                                </tr>
+                                </table>
+                            
+                            </td>
+                            
+                        </tr>
+
+                    </table>
+                    
+                            <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div class="page_body_bottom">
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="page_foot_normal">
+            <div class="comment" id="curlist_info">
+                <span class="cur_time">${Currently_Time:lang} : <span>2008/11/28 17:00</span><span id="cur_time">${cur_time} </span></span>
+
+
+                </div>
+        </div>
+    </div>
+        </td>
+    </tr>
+</table>
+<div class="quick_link"><font face="Arial, sans-serif" size="-1"><b>${username} </b> |
+<a href="#/">${Home:lang}</a>&nbsp;|
+<a href="#/userinfo">${My_Account:lang}</a>&nbsp;|
+<a href="#/login~type=exit">${Exit:lang}</a>&nbsp;
+</div>
+
+<!--target:loadingDiv-->
+    <div class="loading_div">
+        <div class="waitDiv">
+            <div class="waitDiv_content">
+
+                <div class="loading-inner">
+                    <img src="common/img/loading.gif" width="32" height="32">
+                    <div class="loading-text">${Loading_txt:lang}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="loading_ifra" class="loading_ifra"></iframe>
+
+<!--target:blank-->
+<script type="text/javascript" src="common/js/haiyang.js"></script>
+${urlinfo} 
+
+<script type="text/javascript">
+<!--
+function delete_it()
+{
+    if(window.confirm("Did you really want to delete it?")) window.location.href='panel_notebook.php?fr=isNotebook&list_action=del&word_id='+curlist;
+}
+//-->
+</script>
+
+</body>
+
+</html>

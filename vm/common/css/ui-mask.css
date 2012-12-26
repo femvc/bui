@@ -1,0 +1,19 @@
+/*
+ * cb-web
+ * Copyright 2010 Baidu Inc. All rights reserved.
+ * 
+ * path:    ui-mask.css
+ * desc:    遮罩层样式
+ * author:  zhaolei,erik
+ * date:    2010/04/01
+ */
+
+.ui-mask {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1000;
+    background:#333;
+    opacity: 0.2;
+    filter:alpha(opacity=20);
+}

@@ -1,0 +1,14 @@
+{
+    "success":"true",
+    "message":{},
+    "result":[
+        {"list_id":"64","list_name":"2012-03-30 01:23","list_status":"1","list_length":"1","syslist":"0","in_package":"1","last_modify":"1333099393"},
+        {"list_id":"65","list_name":"2012-03-30 02:04","list_status":"1","list_length":"14","syslist":"0","in_package":"1","last_modify":"1333101870"},
+        {"list_id":"63","list_name":"2012-03-30 01:01","list_status":"1","list_length":"5","syslist":"0","in_package":"1","last_modify":"1333098539"},
+        {"list_id":"67","list_name":"fsamily","list_status":"1","list_length":"3","syslist":"0","in_package":"0","last_modify":"1333120745"},
+    ],
+    "syslist":[
+        {"list_id":"2","list_name":"CET6","list_length":"3000","syslist":"1"},
+        {"list_id":"1","list_name":"IELTS","list_length":"4000","syslist":"1"},
+    ]
+}

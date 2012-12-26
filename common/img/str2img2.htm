@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${Product_name:lang}</title>
+</head>
+
+<body>
+<script type="text/javascript">
+<!--
+function str2img2(str) {
+    var src = 'yinbiao/';
+    var lenStr = str.length;
+    var rsString    = "";
+    for (var i=0;i<lenStr;i++) {
+        var theChar   = str.substr(i,1);
+        if (theChar == " ") {
+            rsString += " ";
+        } else if (theChar == "-") {
+            rsString += "<img src=\""+src+"zhonggangxian.png\" border=\"0\" />";
+        } else if (theChar == "_") {
+            rsString += "<img src=\""+src+"/xiahuaxian.png\" border=\"0\" />";
+        } else if (theChar == ".") {
+            rsString += "<img src=\""+src+"dian.png\" border=\"0\" />";
+        } else if (theChar == ":") {
+            rsString += "<img src=\""+src+"maohao.png\" border=\"0\" />";
+        } else if (theChar == "\\") {
+            rsString += "<img src=\""+src+"xiexian.png\" border=\"0\" />";
+        } else if (theChar == "/") {
+            rsString += "<img src=\""+src+"fanxiexian.png\" border=\"0\" />";
+        } else if (theChar == "?") {
+            rsString += "<img src=\""+src+"wenhao.png\" border=\"0\" />";
+        } else{
+            rsString += "<img src=\""+src+theChar+".png\" border=\"0\" />";
+        }
+    }
+
+    rsString = '<img src="'+src+'fangkh-z.gif" alt="" />' + rsString + '<img src="'+src+'fangkh-y.gif" alt="" />';
+    return rsString;
+}
+document.write(str2img2('5nju:mEnEu 7QltrE-7maikrEs5 kCpik5silikEvCl5keinEu kEuni5Eusis'));
+document.write(str2img2('kit'));
+//-->
+</script>
+</body>
+
+</html>

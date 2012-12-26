@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${Product_name:lang}</title>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/drag.js"></script>
+<script type="text/javascript" src="common/js/table.sort.js"></script> 
+<script type="text/javascript">
+<!--
+function hideLoading(){
+    var body=document.getElementsByTagName("BODY")[0];
+    var html=document.getElementsByTagName("HTML")[0];
+    body.style.overflow="";
+    html.style.overflow="";
+    //bui.g("loading_div").style.display="none";
+    
+    var user_name,date;
+    try {user_name=getCookie("user_name");}
+    catch(e){}
+    
+    if(!user_name) user_name="";
+    //$("user_name").value=user_name;
+    //if(!!user_name) $("user_password").focus();
+    //else $("user_name").focus();
+} 
+window.onload=function(){
+    
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
+
+</head>
+
+<body style="">
+<!--target:usercontact-->
+
+
+<table cellpadding="0" class="page">
+    <tr>
+        <td style="vertical-align:top;">
+        <div class="page_container" style="">
+            <div class="page_head_normal">
+            
+            <table style="width:100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="dialog_head_left" style="">
+                    <span class="btn_win"><img alt="" src="common/img/icon_file.gif" /></span></td>
+                    <td class="dialog_head_center">${My_Account:lang} </td>
+                    <td class="dialog_head_right">
+                    <img alt="" src="common/img/win_min.gif" /><img alt="" src="common/img/win_max.gif" /><img alt="" src="common/img/win_close.gif" />
+                    </td>
+                </tr>
+            </table>
+            
+            </div>
+            <div class="page_body_normal">
+                <div class="page_body_content">
+                    <div>
+                    <div id="regbox_body" class="reg_box">
+
+                    
+                    <table style="width:100%" class="info_list">
+                        <tr>
+                            <td valign="top" class="left_link">
+                            <div class="panel_leftlink">
+                                <div class="panel_box_title">${Control_Panel:lang} </div>
+                                <div class="panel_box_content">
+                                    <ul>
+                                        <li><a href="#/userinfo">${Base_Info:lang}</a></li>
+                                        <li><a href="#/usercontact">${Contact:lang}</a></li>
+                                        <li><a href="#/changepsw">${Change_psw:lang}</a></li>
+                                        <li><a href="#/useraccount">${Security_question:lang}</a></li>
+                                        <li>&nbsp;<a style="display:none;" href="#/userpoints">${My_points:lang}</a></li>
+
+                                    </ul>
+                                </div>
+                                <br/>
+                                <div>${expired_until}</div>
+                            </div>
+                            </td>
+                            <td class="myaccount_left">
+                            <div class="right_button">
+                                
+                            </div>
+                            <div class="myaccount_title">${Contact:lang} </div>
+                            <table class="myaccount_content"  cellspacing="5">
+                                <tr>
+                                    <td>${Recipient:lang} :</td>
+                                    <td><div><input class="freetext_normal" name="real_name" size="30" ui="type:TextInput;id:real_name;value:@real_name" /></div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>${Delivery_Address:lang} :</td>
+                                    <td><div><textarea class="textarea_normal" rows="4" cols="30" name="address" ui="type:TextInput;id:address;value:@address">hehe</textarea></div></td>
+                                </tr>
+                                <tr>
+                                    <td>${Mobile:lang} :</td>
+                                    <td><div><input class="freetext_normal" value="" name="mobile" ui="type:TextInput;id:mobile;value:@mobile;rule:mobile" /> </div></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><button type="button" id="save">&nbsp;${Save:lang}&nbsp;</button></td>
+                                </tr>
+                                </table>
+                            
+                            </td>
+                            
+                        </tr>
+
+                    </table>
+                    
+                            <div style="clear: both;"></div>
+                            <input id="action_type" name="action_type" type="hidden" value="update" />
+                    </div>
+                </div>
+                <div class="page_body_bottom">
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="page_foot_normal">
+            <div class="comment" id="curlist_info">
+                <span class="cur_time">${Currently_Time:lang} : <span>2008/11/28 17:00</span><span id="cur_time">${cur_time} </span></span>
+
+
+                </div>
+        </div>
+    </div>
+        </td>
+    </tr>
+</table>
+<div class="quick_link"><font face="Arial, sans-serif" size="-1"><b>${user_name} </b> |
+<a href="#/">${Home:lang}</a>&nbsp;|
+<a href="#/userinfo">${My_Account:lang}</a>&nbsp;|
+<a href="#/login~type=exit">${Exit:lang}</a>&nbsp;
+</div>
+
+<!--target:blank-->
+<script type="text/javascript" src="common/js/haiyang.js"></script>
+${urlinfo} 
+
+<script type="text/javascript">
+<!--
+function delete_it()
+{
+    if(window.confirm("Did you really want to delete it?")) window.location.href='panel_notebook.php?fr=isNotebook&list_action=del&word_id='+curlist;
+}
+//-->
+</script>
+
+</body>
+
+</html>

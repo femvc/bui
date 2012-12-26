@@ -1,0 +1,510 @@
+#===============================
+#fromfileresult_controller.rb
+#===============================
+To_package: To package
+#===============================
+#fromfile_controller.rb
+#===============================
+Load_Words_from_File: Load Words from File
+Previous: Previous
+Next: Next
+Parse_Text: Parse Text
+Cancel: Cancel
+Add_New_List: Add New List
+#===============================
+#he_controller.rb
+#===============================
+hello: hello
+#===============================
+#i18n.rb
+#===============================
+k: k
+#===============================
+#packages_controller.rb
+#===============================
+Save: Save
+Reset: Reset
+Saving: Saving, please wait
+Waiting: Waiting
+Save_and_continue_add: Save &amp; Continue Add
+Save_as_new_word: Save as New Word
+Save_as_New_List: Save as ...
+Save_List: Save List
+Restart_Learn: Restart Learn
+Restart_Review: Restart Review
+Start_Learn: Start Learn
+Start_Review: Start Review
+#===============================
+#viewdetail_controller.rb
+#===============================
+Until_now_you_had: Until now you had
+Words: Words
+Remembered: Remembered
+Until_now_there_had: Until now there had
+For_you: For you
+Strong: Strong
+Weakly: Weakly
+Forgot: Forgot
+#===============================
+#001memerySpan.htm
+#===============================
+Product_name: 'Ebbinghaus Intelligent Remember [v1.0]'
+Loading_txt: Loading ...
+#===============================
+#admin_login.htm
+#===============================
+Admin_Login: Admin Login
+User_name: User name
+User_Name: User Name
+user_name: User name
+Username: Username
+username: Username
+Password: Password
+Remember_me_on_this_computer: Remember me on this computer
+Login: Login
+login: login
+Currently_Time: Currently Time
+#===============================
+#admin_manage.htm
+#===============================
+My_Account: My Account
+Add_SN_Code: Add SN Code
+Quantity: Quantity
+SN_code: SN code
+SN_type: SN type
+Agent_code: Agent code
+Add: Add
+Home: Home
+Exit: Exit
+Help: Help
+#===============================
+#admin_viewsn.htm
+#===============================
+View_SN_Code: View SN Code
+No1: No1
+SN_Code: SN Code
+Type: Type
+Add_Date: Add Date
+Agent: Agent
+Active_Time: Active Time
+Add_SN: Add SN
+Quit: Quit
+#===============================
+#panel_activate.htm
+#===============================
+Activation: Activation
+Validate: Validate
+Already_registered_Click_here: Already registered Click here
+Language: Language
+Lang_Chinese: Lang Chinese
+Lang_English: Lang English
+Lang_Korean: Lang Korean
+Lang_Japanese: Lang Japanese
+#===============================
+#panel_forgotline.htm
+#===============================
+Your_Forget_Line: Your Forget Line
+Ameliorated_Forgot_Line: Ameliorated Forgot Line
+Standard_Forgot_Line: Standard Forgot Line
+Back: Back
+#===============================
+#panel_fromfile.htm
+#===============================
+List_Name: List Name
+New_List_Name: New List Name
+Text_format: Text format
+Separator: Separator
+Text_Content: Text Content
+#===============================
+#panel_fromfileresult.htm
+#===============================
+Load_Words_Result: Load Words Result
+Word: Word
+Mean: Mean
+Phonetic: Phonetic
+Status: Status
+Return: Return
+#===============================
+#panel_fromfileview.htm
+#===============================
+Load_Words_View: Load Words View
+#===============================
+#panel_getpsw.htm
+#===============================
+Get_Password: Get Password
+Email: Email
+#===============================
+#panel_getpswresult.htm
+#===============================
+Your_Password_has_been_sent_to: Your Password has been sent to
+OK: OK
+#===============================
+#panel_learn.htm
+#===============================
+Do_you_remember_correctly: Do you remember correctly?
+Please_read_and_remember_five_times: Please read and remember five times
+Do_you_remember_judge_in_five_second: 'Do you remember?[Judge in 5s]'
+Word_Learn: Word Learn
+Word_Test: Word Test
+Current_List: Current List
+I_am_Remember: Yes Remember
+I_am_Forget: I am Forget
+I_am_Right: '[<u>Y</u>es] Right'
+I_am_Wrong: '[<u>N</u>o] Wrong'
+Next_Word: Next&nbsp;&nbsp;Word
+Finish: Finish
+#===============================
+#panel_learndetail.htm
+#===============================
+Learn_Result: Learn Result
+Learn_Name: Learn Name
+Finish_Status: Finish Status
+Learn_Time: Learn Time
+Forget_Times: Forget Times
+Right_Times: Right Times
+Wrong_Times: Wrong Times
+Continue_Learn: Continue Learn
+Spend_Time: Spend Time
+Learn_Type: Learn Type
+R_Times: R.Times
+Remember_Times: Remember Times
+Word_Count: Word Count
+Unlearn: Unlearn
+#===============================
+#panel_learnhistory.htm
+#===============================
+Learn_History: Learn History
+Message: Message
+Rem_Times: Rem Times
+Use_Time: Use Time
+Finished: Finished
+Delete: Delete
+View_Detail: View Detail
+#===============================
+#panel_login.htm
+#===============================
+User_login: User login
+Cant_access_your_account: Cant access your account?
+Create_an_account: Create an account
+#===============================
+#panel_manageword.htm
+#===============================
+Please_Select_A_Word: Please Select A Word
+You_Cant_Operate_More_Than_One_Word_at_Same_Time: You Cant Operate More Than One Word at Same Time
+Are_You_Sure_You_Want_to_Delete_Word: Are You Sure You Want to Delete Word
+Manage_Word: Manage Word
+Manage: Manage
+Last_Modify: Last Modify
+Add_Word: Add Word
+Edit_Word: Edit Word
+Delete_Word: Delete Word
+Add_Words_from_Text: Add Words from Text
+Load_Words_from_Text: Load Words from Text
+Comment: Comment
+Suggestion: Suggestion
+You_can_use_Quick_Test: 'You can use Quick Test filter the words from list.'
+You_can_use_Quick_Learn: 'You can use Quick Learn learn the new words.'
+QQuery: Query
+Dict: Dict
+Message_Box: Message Box
+#===============================
+#panel_memory.htm
+#===============================
+Your_Memory: Your Memory
+Remember_Degree: Remember Degree
+Review: Review
+My_Forgot_Line: My Forgot Line
+#===============================
+#panel_notebook.htm
+#===============================
+My_Notebook: My Notebook
+Last_Change: Last Change
+Moved_All_Words_to_A_List: Moved All Words to A List
+#===============================
+#panel_notebook2list.htm
+#===============================
+Notebook_to_A_List: Notebook to A List
+Comment: Comment
+#===============================
+#panel_order.htm
+#===============================
+My_Order: My Order
+Choose_product: Choose product
+My_points: My Points
+Contact: Contact Info
+Choose_type: Choose type
+redeem: redeem
+CNY: CNY
+Need_pay: Need pay
+Pay_it: Pay it
+Submit: Submit
+#===============================
+#panel_packages.htm
+#===============================
+Choose_Plan_Package: Choose Plan Package
+Daily_Count: Daily Count
+Package_List: Package List
+Word_List: Word List
+System_Package: '[Default]'
+#===============================
+#panel_pay.htm
+#===============================
+Payment_serial_code: Payment serial code
+#===============================
+#panel_plan.htm
+#===============================
+Learn_Plan: Learn Plan
+Learn_Date: Learn Date
+Learnt_History: Learnt History
+Reviewed_History: Reviewed History
+View: View
+Plan_Learn: Plan Learn
+Plan_Review: Plan Review
+Plan_Use_Time: Plan Use Time
+Today_Learn: Today Learn
+Today_Review: Today Review
+Date: Date
+Today: Today
+Learnt: Learnt
+Reviewed: Reviewed
+Use_Time: Use Time
+Detail: Detail
+Need_Time: Need Time
+#===============================
+#panel_plandetail.htm
+#===============================
+Plan_Detail: Plan Detail
+#===============================
+#panel_recharge.htm
+#===============================
+Account_Recharge: Account Recharge
+Recharge_Code: Recharge Code
+Recharge: Recharge
+Expired_until: Expired until
+#===============================
+#panel_register.htm
+#===============================
+Mobile: Mobile
+Or: Or
+Confirm_password: Confirm password
+Validate_code: Validate Code
+User_Name_Cant_Be_Blank: User Name Cant Be Blank
+Checking: Checking
+#===============================
+#panel_register_bak.htm
+#===============================
+Active_My_Account: Active My Account
+Registration: Registration
+Control_Panel: Control Panel
+User_Info: User Info
+Old_Password: Old Password
+New_Password: New Password
+Change_psw: Change Password
+Change_Password: Change Password
+Password_Strength: Password Strength
+Invite_Register: Invite Register
+Account_Info: Account Info
+#===============================
+#panel_review.htm
+#===============================
+Word_Review: Word Review
+#===============================
+#panel_start.htm
+#===============================
+No_Content_Please_Choose_Another: No Content Please Choose Another
+Please_select_a_list_to_edit: Please select a list to edit
+Are_you_sure_want_to_delete_List: Are you sure want to delete List
+Word_Count: Word Count
+Package: Package
+Modify: Modify
+Edit: Edit
+Add_List: Add list
+New_List_From_Text: Words from Text
+Delete_List: Delete lists
+Start_Test: Start Test
+Quick_Learn: Quick Learn
+Quick_Test: Quick Test
+Start_Wizard: Start Wizard
+My_Memory: My Memory
+My_Package: My Package
+Learn_History: Learn History
+Test_History: Test History
+My_Tools: My Tools
+Edit_List: Edit List
+List_Status: List Status
+Non_learned: Non learned
+Learned: Learned
+#===============================
+#panel_step01.htm
+#===============================
+According_your_plan_You_had_learnt: According your plan, you had learnt
+words: words
+view: view
+In_todays_plan_you_need_to_review: In todays plan you need to review
+and_left: and left
+in_tomorrows_plan: in tomorrows plan
+Start: Start
+Today_Task: Today's Task
+Tomorrow_Task: Tomorrow's Task
+Learn_Words: Learn's Words
+Test_Result: Test Result
+Words_Test: "Test's Words"
+Update_Package: Update Package
+Next_Step: Next&nbsp;&nbsp;Step
+Jump_Over: Jump Over
+Test_Today_Learnt: Test Today's Learnt
+End: End
+Exit_Process: Exit Process
+#===============================
+#panel_step02.htm
+#===============================
+Today_Learn_Plan: Today's Learn Plan
+In_todays_learn_plan_you_need_to: In today's learn plan, you need to
+Learn: Learn
+Let_us_begin: Let us begin
+Let_us_start: Let us start
+#===============================
+#panel_step03.htm
+#===============================
+Test_Today_Learn: Test Today's Learn
+What_a_pity_According_todays_plan_you_need_learn: What a pity! According today's plan, you need learn
+words_you_just_learn: words, you just learn
+words_there_is: words, there is
+words_left: words left
+View_detail: View detail
+Congratulations_you_finished_todays_task: Congratulations you finished todays task
+Do_you_want_to_test_the_words_which_today_learnt: Do you want to test the words which today learnt ?
+#===============================
+#panel_step04.htm
+#===============================
+The_test_detail_show_as_below: The test detail show as below
+You_have: You have
+words_remembered: words remembered
+words_remembered_wrong: words remembered wrong
+words_forgot: words forgot
+#===============================
+#panel_step05.htm
+#===============================
+After_this_period_of_learn: After this period of learn
+We_already_prepared_tomorrow_s_learning_tasks_for_you: We already prepared tomorrow s learning tasks for you
+See_you_next_time: See you next time
+See_you_tomorrow: See you tomorrow
+#===============================
+#panel_supplyusername.htm
+#===============================
+#===============================
+#panel_supplyanswer.htm
+#===============================
+Please_choose_a_way_to_reset_your_password: Please choose a way to reset your password
+Step: Step
+Security_question: Security Question
+Custom_Question: Custom Question
+Your_answer: Your answer
+Send_an_Email: Send an Email
+Send_to_Mobile: Send to Mobile
+Send_a_password_reset_email_to: Send a password reset email to
+Send_a_random_password_to_your_mobile: Send a random password to your mobile
+#===============================
+#panel_supplyrandnum.htm
+#===============================
+Please_input_validate_number: Please input validate number
+Please_input_username: Please input your User Name
+Please_input_email: Please input your E-mail
+Please_input_mobile: Please input your Mobile Number
+email: Email
+mobile: Mobile
+#===============================
+#panel_test.htm
+#===============================
+List_Test: List Test
+Curent_list: Curent list
+List_type: List type
+#===============================
+#panel_testdetail.htm
+#===============================
+List_Test_Result: List Test Result
+Test_Time: Test Time
+Score: Score
+Subject: Subject
+Right_Answer: Right Answer
+Correct_Answer: Correct Answer
+Result: Result
+Your_Answer: Your Answer
+Continue_Test: Continue Test
+Restart_Test: Restart Test
+Test_Type: Test Type
+Forget: Forget
+Correct: Correct
+Wrong: Wrong
+Untest: Untest
+#===============================
+#panel_testhistory.htm
+#===============================
+Test_Detail: Test Detail
+Score_Rate: Score Rate
+Rate: Rate
+Correct: Correct
+Correct_Rate: Correct Rate
+Test_Date: Test Date
+#===============================
+#panel_tools.htm
+#===============================
+Memory_Test_Tools: Memory Test Tools
+Test_memory_span: Test memory span
+#===============================
+#panel_useraccount.htm
+#===============================
+Base_Info: Base Info
+Account_protect: Account protect
+Change: Change
+#===============================
+#panel_userinfo.htm
+#===============================
+Account: Account
+Account_Id: Account ID
+Female_Male: Female Male
+Male: Male
+Female: Female
+Secret: Secret
+Birthday: Birthday
+Recipient: Recipient
+Delivery_Address: Delivery Address
+Work_Status: Work Status
+Worker: Worker
+Student: Student
+Other: Other
+Marry_Status: Marry Status
+Bachelor: Bachelor
+In_loving: In loving
+Espousal: Espousal
+Married: Married
+Divorced: Divorced
+Self_Introduction: Self Introduction
+Wizard: Wizard
+#===============================
+#panel_userpoints.htm
+#===============================
+You_can_use_points_to_buy: Gift card can be deducted part of your order.
+Time: Time
+Points: Points
+Note: Note
+You_can_put_the_following_link_on_your_blog: You can put following link on your blog.
+#===============================
+#panel_userpsw.htm
+#===============================
+Current_password: Current password
+New_password: New password
+Confirm_new_password: Confirm new password
+#===============================
+#process_fromfile.htm
+#===============================
+Create_New_List: Create New List
+#===============================
+#process_manageword.htm
+#===============================
+Continue_Add: Continue Add
+#===============================
+#process_packages.htm
+#===============================
+Exit_Wizard: Exit Wizard
+

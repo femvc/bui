@@ -1,0 +1,74 @@
+/*
+ * cb-web
+ * Copyright 2010 Baidu Inc. All rights reserved.
+ * 
+ * path:    ui-multiselect.css
+ * desc:    复合选择控件样式
+ * author:  wanghaiyang
+ * date:    $Date: 2011-12-20 16:55:38 $
+ */
+
+/**
+ * 清除浮动
+ */
+.multi-select-editable {
+    zoom:1;
+}
+
+
+.multi-select-editable:after {
+    content:"\0020"; 
+    display:block;
+    height:0; 
+    visibility:hidden; 
+    clear:both;
+}
+
+.multi-select-editable h4 {
+    margin: 0px 0px 4px;
+    font-weight: normal;
+}
+
+.source-table {
+    float:left;
+    width:63%;
+}
+.multi-select-transfer-icon {
+    background:url("../img/BlockSprites.png") no-repeat scroll -34px -455px transparent;
+    width:14px;
+    height:10px;
+    display:inline-block;
+    margin-top:100px;
+    
+}
+.multi-select-transfer {
+    float:left;
+    width:3%;
+    margin-right:-30px;
+    text-align:center;
+}
+.selected-table {
+    float:right;
+    width:34%;
+}
+.multi-selected {
+    background-color: #FFF9EE;
+}
+
+.multi-selected.ui-table-row-over {
+    background-color: #FFF9EE;
+}
+.multi-selected.ui-table-row-over table {
+    background-color: #FFF9EE;
+}
+.multi-select {
+    cursor:pointer;
+    text-decoration:underline;
+    color:#002987;
+}
+.multi-selected .multi-select {
+    color:#CCCCCC;
+    font-weight:normal;
+    text-decoration:none;
+    cursor:default;
+}

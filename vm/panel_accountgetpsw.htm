@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${Product_name:lang}</title> 
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript">
+<!--
+function hideLoading(){
+    var body=document.getElementsByTagName("BODY")[0];
+    var html=document.getElementsByTagName("HTML")[0];
+    body.style.overflow="";
+    html.style.overflow="";
+    //bui.g("loading_div").style.display="none";
+    
+    var user_name,date;
+    try {user_name=getCookie("user_name");}
+    catch(e){}
+    
+    if(!user_name) user_name="";
+    //$("user_name").value=user_name;
+    //if(!!user_name) $("user_password").focus();
+    //else $("user_name").focus();
+} 
+window.onload=function(){
+    
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
+</head>
+
+<body class="login">
+<!--target:getpsw-->
+
+
+<table class="login_box" cellspacing="3" cellpadding="0">
+    <tr>
+        <td class="login_box_td">
+                <table style="width:100%">
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                        <img alt="" src="common/img/logo.png" width="100" height="80" />
+                        <div class="login_title">${Get_Password:lang} </div></td>
+                    </tr>
+                    <tr>
+                        <td class="item_title" style="width:160px">&nbsp;</td>
+                        <td class="item_content">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="item_title" style="width:160px">${Email:lang} /${Username:lang} :</td>
+                        <td class="item_content">
+                        <input class="freetext_normal" type="text" id="user_email" name="user_email" value="${user_email} " /> <span id="user_name_msg">${name_msg}  </span> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="item_title" style="width:160px;vertical-align:top">
+                        ${Validate:lang} :</td>
+                        <td class="item_content" style="height:26px; vertical-align:top;">
+                        <input type="text" size="5" class="freetext_normal" id="rand_num" name="rand_num" value="1111" />&nbsp;
+                        <img alt="Unclear?Click image to refresh." src="/code/image.action" class="rand_img" onclick="this.src='/code/image.action?'+Math.random()" /> 
+                        <div class="msg_err" id="num_err" style="display:none;">
+                            Only Num. </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="item_title" style="width:160px">&nbsp;</td>
+                        <td class="item_content">
+                        <input type="submit" value='${Next:lang} ' />&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="item_title" style="width:160px">&nbsp;</td>
+                        <td class="item_content"><span id="err_msg" class="err_msg">${err_msg} </span></td>
+                    </tr>
+                    <tr>
+                        <td class="item_title" style="width:160px">&nbsp;</td>
+                        <td class="item_content">${Already_registered_Click_here:lang}  <a href="#/login">${Login:lang}</a>.</td>
+                    </tr>
+                </table>
+
+        </td>
+    </tr>
+</table>
+<div class="page_foot_normal" style=" visibility:hidden;">
+    <div class="comment" id="curlist_info">
+        <span class="cur_time">${Currently_Time:lang} : <span style="${display_none} ">
+        2008/11/28 17:00</span><span id="cur_time">${cur_time} </span></span>
+    </div>
+</div>
+
+<div class="quick_link"><font face="Arial, sans-serif" size="-1"><b>${user_name} </b> |
+<a href="#/">${Home:lang}</a>&nbsp;|
+<a href="#/userinfo">${My_Account:lang}</a>&nbsp;|
+<a href="#/login~type=exit">${Exit:lang}</a>&nbsp;
+</div>
+
+<!--target:blank-->
+<script type="text/javascript" src="common/js/haiyang.js"></script>
+${urlinfo} 
+<script type="text/javascript">
+<!--
+//
+    var name_exist;
+    function check(sid)
+    {
+        var obj,txt,r,re,msg,err_msg;
+        obj=$(sid);
+        if(!obj) return;
+
+        msg=[];
+        msg[0]="";
+        msg[1]="<div class=\"msg_ok\">&nbsp;</div>";
+        msg[2]="<div class=\"msg_err\">Already exist.</div>";
+        msg[3]="<div class=\"msg_err\">Too short.</div>";
+        msg[4]="<div class=\"msg_err\">Too long.</div>";
+        msg[5]="<div class=\"msg_err\">Can't be Blank.</div>";
+        msg[6]="<div class=\"msg_err\">Invalid character.</div>";
+
+        txt=obj.value;
+        switch(sid)
+        {
+        case "user_name":
+            txt=txt.trim();
+            re=/^[0-9a-zA-Z]+$/g;             // 创建正则表达式模式。
+            if(txt=="") 
+            {err_msg=5;}
+            else if(txt.replace(re,"")!="") 
+            {err_msg=6;}
+            else if(txt.length>50)
+            {err_msg=4;}
+            else if(txt.length<2)
+            {err_msg=3;}
+            else
+            {
+            }
+            break;
+        case "user_password":
+            if(txt=="") 
+            {err_msg=5;}
+            else if(txt.length>100)
+            {err_msg=4;}
+            else if(txt.length<3)
+            {err_msg=3;}
+            else
+            {err_msg=1;}
+            break;
+        case "question":
+            if(txt=="") 
+            {err_msg=5;}
+            else if(txt.length>100)
+            {err_msg=4;}
+            else if(txt.length<3)
+            {err_msg=3;}
+            else
+            {err_msg=1;}
+            break;
+        case "answer":
+            if(txt=="") 
+            {err_msg=5;}
+            else if(txt.length>100)
+            {err_msg=4;}
+            else if(txt.length<3)
+            {err_msg=3;}
+            else
+            {err_msg=1;}
+            break;
+        default:
+            
+            break;
+        }
+        
+        $(sid+"_msg").innerHTML=msg[err_msg];
+        
+        
+
+    }
+    
+//-->
+</script>
+
+</body>
+
+</html>

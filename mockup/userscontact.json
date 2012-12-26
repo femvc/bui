@@ -1,0 +1,13 @@
+{
+    "success":"true",
+    "message":{
+        "field":{}
+    },
+    "result":{
+        "user_id":"1",
+        "username":"haiyang5210",
+        "real_name":"real_name",
+        "address":"Baihe Jilin",
+        "mobile":"121212 3331105",
+    }
+}

@@ -1,0 +1,519 @@
+#===============================
+#fromfileresult_controller.rb
+#===============================
+to_package: 查看学习包
+#===============================
+#fromfile_controller.rb
+#===============================
+Load_Words_from_File: 从文本中读取词汇
+Previous: 上一页
+Next: 下一页
+Parse_Text: 解析文本
+Cancel: 取<s> </s>消
+Add_New_List: 新列表
+#===============================
+#he_controller.rb
+#===============================
+hello: hello
+#===============================
+#i18n.rb
+#===============================
+k: k
+#===============================
+#packages_controller.rb
+#===============================
+Save: 保<s> </s>存
+Reset: 重<s> </s>置
+Saving: 保存中 ...
+Waiting: 请稍候 ...
+Save_and_continue_add: 保存并继续添加
+save_as_new_word: 另存为新词
+Save_as_New_List: 另存为...
+Save_List: 保存列表
+Restart_Learn: 重新学习
+Restart_Review: 重新复习
+Start_Learn: 开始学习
+Start_Review: 开始复习
+#===============================
+#viewdetail_controller.rb
+#===============================
+until_now_you_had: 到现在为止，你有
+Words: 词
+words: words
+Remembered: 记住的
+Until_now_there_had: 到现在为止，有
+For_you: 对于你
+Strong: 记忆中
+Weakly: 快忘了
+Forgot: 已忘记
+#===============================
+#001memerySpan.htm
+#===============================
+Product_name: '艾宾浩斯智能记忆升级版 [v1.0]'
+Loading_txt: 载入中 ...
+#===============================
+#admin_login.htm
+#===============================
+Admin_Login: 管理员登录
+User_name: 用户名
+Username: 用户名
+username: 用户名
+Password: 密<s>一</s>码
+remember_me_on_this_computer: 在这台电脑上记住我
+Login: 登 录
+Currently_Time: 目前时间
+#===============================
+#admin_manage.htm
+#===============================
+My_Account: 我的帐户
+User_activate: 新用户设置
+Add_SN_Code: 增加SN码
+Quantity: 数<s> </s>量
+SN_code: SN 码
+SN_type: SN 类型
+agent_code: 代理代码
+Add: 新<s> </s>增
+Home: 主<s> </s>页
+Exit: 退<s> </s>出
+Help: 帮<s> </s>助
+#===============================
+#admin_viewsn.htm
+#===============================
+View_SN_Code: 查看SN码
+No1: No1
+SN_code: SN 码
+Type: 类<s> </s>型
+Add_Date: 添加日期
+Agent: 代<s> </s>理
+Active_Time: 激活时间
+Add_SN: 添加 SN
+Quit: 退<s> </s>出
+#===============================
+#panel_activate.htm
+#===============================
+Activation: 激<s> </s>活
+Validate: 验证码
+Already_registered_Click_here: 已经注册的点击这里
+Language: 语言
+Lang_Chinese: 中文
+Lang_English: 英文
+Lang_Korean: 韩语
+Lang_Japanese: 日语
+#===============================
+#panel_forgotline.htm
+#===============================
+Your_Forget_Line: 您的遗忘曲线
+Ameliorated_Forgot_Line: 改善后的遗忘曲线
+Standard_Forgot_Line: 标准遗忘曲线
+Back: 返<s> </s>回
+#===============================
+#panel_fromfile.htm
+#===============================
+List_Name: 列表名称
+New_List_Name: 新列表名称
+Text_format: 文本格式
+Separator: 分<s> </s>隔
+Text_Content: 文本内容
+#===============================
+#panel_fromfileresult.htm
+#===============================
+Load_Words_Result: Load Words Result
+Word: 单<s> </s>词
+Mean: 释<s> </s>义
+Phonetic: 音<s> </s>标
+Status: 状<s> </s>态
+Return: 返<s> </s>回
+#===============================
+#panel_fromfileview.htm
+#===============================
+Load_Words_View: 载入预览
+#===============================
+#panel_getpsw.htm
+#===============================
+Get_Password: 获取密码
+Email: Email
+#===============================
+#panel_getpswresult.htm
+#===============================
+Your_Password_has_been_sent_to: 您的密码已被发送到
+OK: OK
+#===============================
+#panel_learn.htm
+#===============================
+Do_you_remember_correctly: 你确定记得吗?
+Please_read_and_remember_five_times: 请跟读5次并记住它
+Do_you_remember_judge_in_five_second: '你确定记得吗?'
+Word_Learn: 单词学习
+Word_Test: 单词测试
+Current_List: 当前列表
+I_am_Remember: 是的, 记得
+I_am_Forget: 我忘记了
+I_am_Right: '[<u>Y</u>es] 正确'
+I_am_Wrong: '[<u>N</u>o] 错误'
+Next_Word: 下一个单词
+Finish: 完<s> </s>成
+#===============================
+#panel_learndetail.htm
+#===============================
+Learn_Result: 学习结果
+Learn_Name: 学习名称
+Finish_Status: 完成状态
+Learn_Time: 学习时间
+Forget_Times: 遗忘次数
+Right_Times: 正确次数
+Wrong_Times: 错误次数
+Continue_Learn: 继续学习
+Spend_Time: 耗<s> </s>时
+Learn_Type: 学习类型
+R_Times: 正确次数
+Remember_Times: 记住次数
+Word_Count: 单词数
+Unlearn: 未学习的
+#===============================
+#panel_learnhistory.htm
+#===============================
+Learn_History: 学习历史
+Message: 提示信息
+Rem_Times: 记住次数
+Use_Time: 使用时间
+Finished: 完<s> </s>成
+Delete: 删<s> </s>除
+View_Detail: 查看详情
+#===============================
+#panel_login.htm
+#===============================
+User_login: 用户登录
+Cant_access_your_account: 无法访问我的帐户?
+Create_an_account: 创建一个帐户
+#===============================
+#panel_manageword.htm
+#===============================
+Please_Select_A_Word: 请选择一个单词
+You_Cant_Operate_More_Than_One_Word_at_Same_Time: 你不能在同一时间内操作多个单词
+Are_You_Sure_You_Want_to_Delete_Word: 你确定要删除这个单词
+Manage_Word: 管理单词
+Manage: 管<s> </s>理
+Last_Modify: 上次更改
+Add_Word: 添加单词
+Edit_Word: 编辑单词
+Delete_Word: 删除单词
+Add_Words_from_Text: 从文本中添加单词
+Load_Words_from_Text: 从文本中加载单词
+Comment: 备<s> </s>注
+Suggestion: 建<s> </s>议
+You_can_use_Quick_Test: '您可以使用快速测试过滤新单词.'
+You_can_use_Quick_Learn: '您可以使用快速学习来学习新单词.'
+QQuery: 查<s> </s>询
+Dict: 字<s> </s>典
+Message_Box: 短消息
+#===============================
+#panel_memory.htm
+#===============================
+Your_Memory: 你的记忆
+Remember_Degree: 记忆水平
+Review: 复<s> </s>习
+My_Forgot_Line: 我的遗忘曲线
+#===============================
+#panel_notebook.htm
+#===============================
+My_Notebook: 我的记事本
+Last_Change: 上次更改
+Moved_All_Words_to_A_List: 移动所有单词到一个列表中
+#===============================
+#panel_notebook2list.htm
+#===============================
+Notebook_to_A_List: Notebook to A List
+Comment: 备<s> </s>注
+#===============================
+#panel_order.htm
+#===============================
+My_Order: 我的订单
+Choose_product: 选择产品
+My_points: 我的礼品卡
+Contact: 联系信息
+Choose_type: 选择类型
+redeem: 返<s> </s>现
+CNY: 元
+Need_pay: 需要支付
+Pay_it: 支 付
+Submit: 提 交
+#===============================
+#panel_packages.htm
+#===============================
+Choose_Plan_Package: 选择学习包
+Daily_Count: 每天学习
+Package_List: 学习包列表
+You_can_add_or_remove_Word_List_from_Plan_Package: 你可以从学习包中增加或删除词汇列表
+Word_List: 单词列表
+System_Package: '[默认]'
+#===============================
+#panel_pay.htm
+#===============================
+Payment_serial_code: 支付序列号
+#===============================
+#panel_plan.htm
+#===============================
+Learn_Plan: 学习计划
+Learn_Date: 学习日期
+Learnt_History: 学习历史
+Reviewed_History: 复习历史
+View: 查<s> </s>看
+Plan_Learn: 计划学习
+Plan_Review: 计划复习
+Plan_Use_Time: 预计使用时间
+Today_Learn: 今天学习
+Today_Review: 今天复习
+Date: 日<s> </s>期
+Today: 今<s> </s>天
+Learnt: 已经学习
+Reviewed: 已经复习
+Use_Time: 使用时间
+Detail: 详<s> </s>情
+Need_Time: 需要时间
+had_learnt: 已学习
+in_plan: 留在计划列表中
+not_learnt: 尚未学习
+had_reviewed: 已复习
+#===============================
+#panel_plandetail.htm
+#===============================
+Plan_Detail: 计划内容
+#===============================
+#panel_recharge.htm
+#===============================
+Account_Recharge: 账户充值
+Recharge_Code: 充值码
+Recharge:充<s> </s>值
+Expired_until: 有效期至
+#===============================
+#panel_register.htm
+#===============================
+Mobile: 手<s> </s>机
+Or: Or
+Confirm_password: 确认新密码
+Validate_code: 验证码
+User_Name_Cant_Be_Blank: 用户名不能为空
+Checking: 查询中
+#===============================
+#panel_register_bak.htm
+#===============================
+Active_My_Account: 激活我的帐户
+Registration: 注<s> </s>册
+Control_Panel: 控制面板
+User_Info: 用户信息
+Old_Password: 旧密码
+New_Password: 新密码
+Change_psw: 修改密码
+Change_Password: 修改密码
+Password_Strength: 密码强度
+Invite_Register: 邀请注册
+Account_Info: 帐户信息
+#===============================
+#panel_review.htm
+#===============================
+Word_Review: 单词复习
+#===============================
+#panel_start.htm
+#===============================
+No_Content_Please_Choose_Another: 列表为空，请选择另一个列表
+Please_select_a_list_to_edit: 请选择一个列表编辑
+Are_you_sure_want_to_delete_List: 你确定要删除列表吗
+Word_Count: 单词数
+Package: 学习包
+Modify: 修改
+Edit: 编辑
+Add_List: 添加列表
+New_List_From_Text: 从文本生成列表
+Delete_List: 删除列表
+Start_Test: 开始测试
+Quick_Learn: 快速学习
+Quick_Test: 快速测试
+Start_Wizard: 启动向导
+My_Memory: 我的记忆
+My_Package: 我的学习包
+Learn_History: 学习历史
+Test_History: 测试历史
+My_Tools: 小工具
+Edit_List: 编辑列表
+List_Status: 列表状态
+Non_learned: 没学过的
+Learned: 学过的
+#===============================
+#panel_step01.htm
+#===============================
+After_this_period_of_learning_You_had_learnt: 经过这段时间的学习，您已经学习了
+Words: 词
+view: 查看
+In_todays_plan_you_need_to_review: 在今天的计划中，你需要复习
+and_left: 剩余
+in_tomorrows_plan: 明天再复习
+Start: 开<s> </s>始
+Today_Task: 今天的任务
+Tomorrow_Task: 明天的任务
+Learn_Words: 测试今天所学
+Test_Result: 测试结果
+Words_Test: 测试结果
+Update_Package: 更新学习包
+Next_Step: 下一步
+Jump_Over: 跳<s> </s>过
+Test_Today_Learnt: 测试今天所学
+End: 结<s> </s>束
+Exit_Process: 退出向导
+#===============================
+#panel_step02.htm
+#===============================
+Today_Learn_Plan: 今天的学习计划
+In_todays_learn_plan_you_need_to: 在今天的学习计划中，你需要
+Learn: 学 习
+Let_us_begin: 马上开始
+Let_us_start: 马上开始
+#===============================
+#panel_step03.htm
+#===============================
+Test_Today_Learn: 测试今天所学
+What_a_pity_According_todays_plan_you_need_learn: 太遗憾了！根据今天的计划，你需要学习
+words_you_just_learn: 个单词, 你只学习了
+words_there_is: 个单词, 还有
+words_left: 个单词未学习 
+View_detail: 查看详细信息
+Congratulations_you_finished_todays_task: 祝贺你完成了今天的学习任务!
+Do_you_want_to_test_the_words_which_today_learnt: 你是否想测试今天学过的词 ?
+#===============================
+#panel_step04.htm
+#===============================
+The_test_detail_show_as_below: 以下是测试详细信息
+You_have: 你已经
+words_remembered: 记住的词
+words_remembered_wrong: 记错的词
+words_forgot: 忘记的词
+geci: 个单词
+#===============================
+#panel_step05.htm
+#===============================
+After_this_period_of_learn: 经过这一阶段的学习
+We_already_prepared_tomorrow_s_learning_tasks_for_you: 我们已经为你准备好明天的学习任务
+See_you_next_time: 下次见
+See_you_tomorrow: 明天见
+#===============================
+#panel_supplyusername.htm
+#===============================
+#===============================
+#panel_supplyanswer.htm
+#===============================
+Please_choose_a_way_to_reset_your_password: 请选择一种方式来重置密码
+Step: 步<s> </s>骤
+Security_question: 安全问题
+Custom_Question: 自定义问题
+Your_answer: 你的答案
+Send_an_Email: 发送到邮箱
+Send_to_Mobile: 发送到手机
+Send_a_password_reset_email_to: 重置密码的邮件发已送到
+Send_a_random_password_to_your_mobile: 发送一个随机密码到您的手机
+#===============================
+#panel_supplyrandnum.htm
+#===============================
+Please_input_validate_number: 请输入验证码
+Please_input_username: 请输入您的用户名
+Please_input_email: 请输入您的E-mail
+Please_input_mobile: 请输入您的手机号码
+email: Email
+mobile: 手<s> </s>机
+#===============================
+#panel_test.htm
+#===============================
+List_Test: 测试列表
+Current_list: 当前列表
+list_type: 列表类型
+#===============================
+#panel_testdetail.htm
+#===============================
+List_Test_Result: 列出测试结果
+Test_Time: 测试时间
+Score: 评<s> </s>分
+Subject: 题<s> </s>目
+Right_Answer: 正确答案
+Correct_Answer: 正确答案
+Result: 结<s> </s>果
+Your_Answer: 你的答案
+Continue_Test: 继续测试
+Restart_Test: 重新测试
+Test_Type: 测试类型
+Forget: 忘<s> </s>记
+Correct: 正<s> </s>确
+Wrong: 错<s> </s>误
+Untest: 未测试
+#===============================
+#panel_testhistory.htm
+#===============================
+Test_Detail: 测试详情
+Score_Rate: 得<s> </s>分
+Rate: Rate
+Correct: 正<s> </s>确
+Correct_Rate: 正确率
+Test_Date: 测试日期
+#===============================
+#panel_tools.htm
+#===============================
+Memory_Test_Tools: 测试记忆工具
+Test_memory_span: 测试记忆广度
+#===============================
+#panel_useraccount.htm
+#===============================
+Base_Info: 基本信息
+Account_protect: 帐户保护
+Change: 修<s> </s>改
+#===============================
+#panel_userinfo.htm
+#===============================
+Account: 帐<s> </s>户
+Account_Id: 帐户 ID
+Female_Male: 性<s> </s>别
+Male: 男
+Female: 女
+Secret: 秘密
+Birthday: 生<s> </s>日
+Recipient: 收件人
+Delivery_Address: 收件地址
+Work_Status: 工<s> </s>作
+Worker: 已工作
+Student: 学生
+Other: 其他
+Marry_Status: 个人状态
+Bachelor: 单身
+In_loving: 恋爱中
+Espousal: 订婚
+Married: 已婚
+Divorced: 离婚
+Self_Introduction: 自我介绍
+Wizard: 向<s> </s>导
+#===============================
+#panel_userpoints.htm
+#===============================
+You_can_use_points_to_buy: 礼品卡可抵扣部分
+Time: 时<s> </s>间
+Points: 点
+Note: 注<s> </s>意
+You_can_put_the_following_link_on_your_blog: 你可以将下面的链接放到您的论坛或者微博
+#===============================
+#panel_userpsw.htm
+#===============================
+Current_password: 当前密码
+New_password: 新密码
+Confirm_new_password: 确认新密码
+#===============================
+#process_fromfile.htm
+#===============================
+Create_New_List: 新增列表
+#===============================
+#process_manageword.htm
+#===============================
+Continue_Add: 继续新增
+#===============================
+#process_packages.htm
+#===============================
+Exit_Wizard: 退出向导
+
+
+
+
+
