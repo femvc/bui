@@ -15,6 +15,9 @@ document.write('<script type="text/javascript" src="src/extend/base64.js       "
  */
 document.write('<script type="text/javascript" src="src/er/yaml.js              "></script>');
 document.write('<script type="text/javascript" src="src/er/bui.js               "></script>');
+document.write('<script type="text/javascript" src="src/er/eventdispatcher.js   "></script>');
+document.write('<script type="text/javascript" src="src/er/events.js            "></script>');
+document.write('<script type="text/javascript" src="src/er/basemodel.js         "></script>');
 document.write('<script type="text/javascript" src="src/er/context.js           "></script>');
 document.write('<script type="text/javascript" src="src/er/controller.js        "></script>');
 document.write('<script type="text/javascript" src="src/er/template.js          "></script>');
@@ -61,20 +64,6 @@ document.write('<script type="text/javascript" src="asset/templist.js           
  *
  * @public
  */
-document.write('<script type="text/javascript" src="src/user/userinfo.js        "></script>');
-document.write('<script type="text/javascript" src="src/user/userpoints.js      "></script>');
-document.write('<script type="text/javascript" src="src/user/usercontact.js     "></script>');
-document.write('<script type="text/javascript" src="src/user/useraccount.js     "></script>');
 document.write('<script type="text/javascript" src="src/login/login.js          "></script>');
-document.write('<script type="text/javascript" src="src/login/getpsw.js         "></script>');
-document.write('<script type="text/javascript" src="src/login/getpswresult.js   "></script>');
-document.write('<script type="text/javascript" src="src/login/signup.js         "></script>');
-document.write('<script type="text/javascript" src="src/login/activate.js       "></script>');
-document.write('<script type="text/javascript" src="src/login/recharge.js       "></script>');
-document.write('<script type="text/javascript" src="src/login/supplyusername.js "></script>');
-document.write('<script type="text/javascript" src="src/login/supplyrandnum.js  "></script>');
-document.write('<script type="text/javascript" src="src/login/supplyanswer.js   "></script>');
-document.write('<script type="text/javascript" src="src/login/changepsw.js      "></script>');
-
 //注: 文件加载完后,通过 bui.init();启动框架
 

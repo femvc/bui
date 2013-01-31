@@ -301,4 +301,6 @@ bui.Dialog.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.Dialog);
+//bui.Control.derive(bui.Dialog);
+/* bui.Dialog 继承了 bui.Control */
+bui.inherits(bui.Dialog, bui.Control);

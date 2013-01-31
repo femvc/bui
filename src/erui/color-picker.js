@@ -148,4 +148,6 @@ bui.ColorPicker.prototype = /** @lends {bui.ColorPicker.prototype} */ {
 };
 
 /*通过bui.Control派生*/
-bui.Control.derive(bui.ColorPicker);
+//bui.Control.derive(bui.ColorPicker);
+/* bui.ColorPicker 继承了 bui.Control */
+bui.inherits(bui.ColorPicker, bui.Control);

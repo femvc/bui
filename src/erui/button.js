@@ -144,5 +144,8 @@ bui.Button.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.Button);
+//bui.Control.derive(bui.Button);
+/* bui.Button 继承了 bui.Control */
+bui.inherits(bui.Button, bui.Control);
+
 

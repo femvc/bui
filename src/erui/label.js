@@ -62,4 +62,6 @@ bui.Label.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.Label);
+//bui.Control.derive(bui.Label);
+/* bui.Label 继承了 bui.Control */
+bui.inherits(bui.Label, bui.Control);

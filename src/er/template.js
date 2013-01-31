@@ -113,7 +113,7 @@ bui.Template = {
         if(targetName == null || targetName == '') return '';
         
         if(me.targetContainer[targetName] === undefined) 
-            me.error('Target "'+targetName+'" not exist.');
+            throw new Error('Target "'+targetName+'" not exist.');
         
         return me.targetContainer[targetName];
     },

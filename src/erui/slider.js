@@ -267,4 +267,6 @@ bui.Slider.getMousePosition = function(ev) {
 
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.Slider);
+//bui.Control.derive(bui.Slider);
+/* bui.Slider 继承了 bui.Control */
+bui.inherits(bui.Slider, bui.Control);

@@ -103,5 +103,6 @@ bui.ComboBox.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.ComboBox);
-
+//bui.Control.derive(bui.ComboBox);
+/* bui.ComboBox 继承了 bui.Control */
+bui.inherits(bui.ComboBox, bui.Control);

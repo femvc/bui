@@ -73,7 +73,7 @@ bui.FloatColorPalette.prototype = {
             if (me.onselect(value) !== false) {
                 me.cvalue = value;
                 me.value = value;
-                me.g(me.getId('input')).value = value.toUpperCase();
+                bui.g(me.getId('input')).value = value.toUpperCase();
                 me.repaintMain();
                 me.hideLayer();
             }
@@ -89,7 +89,7 @@ bui.FloatColorPalette.prototype = {
      */
     repaintMain: function() {
         var me = this, 
-            showGrid = me.g(me.getId('point'));
+            showGrid = bui.g(me.getId('point'));
         showGrid.style.backgroundColor = '#' + this.value;
     },
 
@@ -142,7 +142,7 @@ bui.FloatColorPalette.prototype = {
     },
     _onInputChange: function() {
         var me = this,
-            input = me.g(me.getId('input'));
+            input = bui.g(me.getId('input'));
         var newValue = input.value;
 
         me.cvalue = newValue;
@@ -437,4 +437,6 @@ bui.FloatColorPalette.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.FloatColorPalette);
+//bui.Control.derive(bui.FloatColorPalette);
+/* bui.FloatColorPalette 继承了 bui.Control */
+bui.inherits(bui.FloatColorPalette, bui.Control);

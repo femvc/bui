@@ -1,28 +1,43 @@
 'use strict';
+
 var login = {
-    config:{
-        'action':[
-            {'location':'/login','action':'login'}
+    config: {
+        'action': [
+            {'location':'/login','action': 'login.Signin'}
         ]
-    },
+    }
+};
+
+login.Signin = function(){
+    bui.Action.call(this);
     /**
      * Action索引ID
+     * 
+     * @comment bui.Action.map[action.id] = action;
+     * @comment 主要用于控件中通过onclick="bui.Control.get('listTable','login');
      */
-    id: 'login',
+    this.id = 'login';
     /**
      * 初始化数据模型
      */
-    model: {
-    },
-    BACK_LOCATION: '/login',
+    this.view = 'login';
+    /**
+     * 初始化数据模型
+     */
+    this.model = new bui.BaseModel();
+    this.BACK_LOCATION = '/login';
     /**
      * 用于同步[顺序执行]那些需要在页面载入前发出的有依赖关系的异步请求,
      * 执行过程中会阻塞页面初始化,因此不能太多!!
      * 如需有很多异步请求,建议使用类似模板加载时的状态计数的方式同步发出
      */
-    CONTEXT_INITER_LIST: [
+    this.CONTEXT_INITER_LIST = [
         'userLogout'
-    ],
+    ];
+    
+};
+
+login.Signin.prototype = {
     userLogout: function(args, callback){
         var me = this;
         
@@ -34,7 +49,7 @@ var login = {
     },
     initModel: function(callback){
         var me = this;
-        
+        me.model.set('userName','9999');
         callback&&callback();
     },
     /**
@@ -45,8 +60,8 @@ var login = {
     initBehavior: function(controlMap) {
         var me = this;
         
-        me.controlMap['username'].main.value = me.model['u'] || '';// ? username.value : 'Account ID/User Name';
-        me.controlMap['password'].main.value = me.model['p'] || '';// ? username.value : 'Account ID/User Name';
+        //me.controlMap['username'].main.value = me.model['u'] || '';// ? username.value : 'Account ID/User Name';
+        //me.controlMap['password'].main.value = me.model['p'] || '';// ? username.value : 'Account ID/User Name';
         
         
         //username.onfocus = me.onfocus;
@@ -126,5 +141,7 @@ var login = {
 };
 
 bui.Controller.addModule(login);
-bui.Action.derive(login);
-
+//派生自 bui.Action
+//bui.Action.derive(login.Signin);
+//bui.derive(login, bui.Action);
+bui.inherits(login.Signin, bui.Action);

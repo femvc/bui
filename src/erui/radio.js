@@ -117,5 +117,6 @@ bui.Radio.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.Radio);
-
+//bui.Control.derive(bui.Radio);
+/* bui.Radio 继承了 bui.Control */
+bui.inherits(bui.Radio, bui.Control);

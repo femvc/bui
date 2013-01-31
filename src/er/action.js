@@ -9,8 +9,8 @@
  * date:    2012/01/01 [用python脚本自动维护]
  */
 
-///import bui;
-bui.Action = function(){
+bui.Action = function(options){
+    bui.EventDispatcher.call(this);
     /**
      * Action的页面主元素[容器]
      *
@@ -38,7 +38,7 @@ bui.Action = function(){
      * @public
      * @return {Map}
      */
-    this.model = {};
+    this.model = new bui.BaseModel();
     /**
      * Action的顶层控件容器
      *
@@ -46,9 +46,31 @@ bui.Action = function(){
      * @return {Map}
      */
     this.controlMap = {};
+    //声明类型
+    this.type = 'action';
+    
+    //保存参数
+    if (options && options.id) {
+        this.initOptions(options);
+        //主要用new Action({id:XXX,view:XXX})时建立action的索引.
+        //注: 如果不是new Action({})的方式创建, 则bui.Action.map[this.id]在bui.Action.derive()里会覆盖掉这里设置的值
+        bui.Action.map[this.id] = this;
+    }
 };
 
 bui.Action.prototype = {
+    /**
+     * 设置参数
+     * 
+     * @protected
+     * @param {Object} options 参数集合
+     * @private
+     */
+    initOptions: function ( options ) {
+        for ( var k in options ) {
+            this[ k ] = options[ k ];
+        }
+    },
     /**
      * 获取视图模板名
      * 
@@ -73,13 +95,13 @@ bui.Action.prototype = {
      */
     enterAction : function(args){
         var me = this,
-            //创建一个异步队列    
-            que = bui.asyque();
-        
-        me.args = args;
-        
-        //默认创建一个DIV作为主元素
-        que.push(function(callback){
+            que;
+        //创建一个异步队列     
+        que = bui.asyque();
+        que.push(function(callback){var me = this;
+            //开始执行Action的处理流程
+            me.trigger('BEFORE_ENTER_ACTION', me);
+            //默认创建一个DIV作为主元素
             if(!me.main && document && document.createElement){
                 if(bui.g('main')) {
                     me.main = bui.g('main');
@@ -88,33 +110,28 @@ bui.Action.prototype = {
                     document.body.appendChild(me.main);
                 }
             }
-            me.main.action = me;
+            me.main.action = me;    
             
-            callback&&callback();
-        });
-        
-        //action的enter接口,使用者自己的实现,默认为空函数
-        que.push(me.enter,me);
-        
-        que.push(function(callback){
+            me.args = args;
             var k;
             // 先将PARAM_MAP中的key/value装入model
             for(k in me.PARAM_MAP){ if(k){ me.model[k] = me.PARAM_MAP[k]; }}
             //初始化Model
             for(k in me.args){ if(k){ me.model[k] = me.args[k]; }}
-            
-            callback&&callback();
-        });
+                
+            me.trigger('BEFORE_INIT_MODEL', me);
         
-        que.push(me.initContext,me);
+        callback&&callback();}, me);
+        
+        //初始化Model
         que.push(me.initModel,me);
         //初始化View
         que.push(me.initView,me);
-        //渲染视图
-        que.push(me.beforeRender,me);
-        que.push(me.render,me);
         
-        que.push(function(callback){
+        que.push(function(callback){var me = this;
+            //渲染视图
+            me.trigger('BEFORE_RENDER', me);
+            me.render();
             if(!me.rendered && typeof bui !== 'undefined' && bui && bui.Template && me.main){
                 var mainHTML = bui.Template.merge(bui.Template.getTarget(me.getView()), me.model);
                 me.main.innerHTML = mainHTML;
@@ -122,63 +139,22 @@ bui.Action.prototype = {
             }
             //渲染当前view中的控件
             bui.Control.init(me.main, me.model, me);
+            me.trigger('AFTER_RENDER', me);
+           
+
             
-            callback&&callback();
-        });
-        
-        que.push(me.afterRender,me);
-        
-        //控件事件绑定
-        que.push(function(callback){
+            //控件事件绑定
             me.initBehavior(me.controlMap);
             me.checkAuthority();
-            me.onready();
+            me.trigger('READY', me);
 
             bui.Mask.hideLoading();
             bui.Controller.checkNewRequest();
-
-            callback&&callback();
-        });
+        
+        callback&&callback();}, me);
 
         que.next();
     },
-    /**
-     * 进入Action后的预处理函数[支持异步]
-     *
-     * @prtected
-     * @param {Object} argMap 初始化的参数[通过url传过来的参数].
-     * @param {Function} callback 初始化完成的回调函数.
-     */
-    initContext: function(callback) {
-        var me = this,
-            getters = me['CONTEXT_INITER_LIST'],
-            i = -1,
-            len = getters ? getters.length : 0;
-
-        // 开始初始化action指定的context
-        repeatCallback();
-        /**
-         * Context初始化的回调函数
-         * @private
-         */
-        function repeatCallback() {
-            i++;
-
-            if (i < len) {
-                me[getters[i]].call(me, me.args, repeatCallback);
-            } else {
-                callback.call(me);
-            }
-        }
-    }, 
-    /**
-     * 进入action时的外部接口
-     *
-     * @public
-     * @param {Object} argMap 通过url传过来的参数表.
-     */
-    enter : function(callback){callback&&callback();},
-   
     /**
      * 初始化数据模型
      * 
@@ -195,26 +171,12 @@ bui.Action.prototype = {
     initView: function(callback){callback&&callback();},
     
     /**
-     * 渲染开始事件接口
-     *
-     * @protected
-     */    
-    beforeRender: function(callback){callback&&callback();},
-    
-    /**
-     * 渲染结束事件接口
-     *
-     * @protected
-     */
-    afterRender: function(callback){callback&&callback();},
-    
-    /**
      * 绘制当前action的显示
      *
      * @protected
      * @param {HTMLElement} dom 绘制区域的dom元素.
      */
-    render: function(callback){callback&&callback();},
+    render: function(){},
     
     /**
      * 初始化列表行为
@@ -227,10 +189,6 @@ bui.Action.prototype = {
      *
      */
     checkAuthority: function(){},
-    /**
-     * Action初始化完毕事件接口.
-     */
-    onready: function(){},
     
     /**
      * 模型属性发生变化事件监听器
@@ -286,7 +244,8 @@ bui.Action.prototype = {
     dispose: function() {
         var me = this,
             controlMap = me.controlMap,
-            main = me.main;
+            main = me.main,
+            model = me.model;
 
         // dispose子控件
         if (controlMap) {
@@ -308,7 +267,12 @@ bui.Action.prototype = {
             }
             me.main = null;
         }
-
+        
+        if (model) {
+            model.dispose();
+            me.model = undefined;
+        }
+        
         me.rendered = null;
     },
     /**
@@ -320,33 +284,48 @@ bui.Action.prototype = {
         bui.Controller.back();
     }
 };
+
+bui.inherits(bui.Action, bui.EventDispatcher);
 /**
- * Action的静态属性
+ * Action的静态属性[索引Action]
  */
 bui.Action.map = {};
+
 /**
- * 继承Action
+ * 通过Action类派生出action
+ *
+ * @param {Object} action 对象
+ * @public
  */
 bui.Action.derive = function(action){
-    var me,i;
-    
-    if(Object.prototype.toString.call(action) == '[object String]'){
-        action = window[action];
+    var me,
+        i;
+    //传进来的是function
+    if (action.prototype) {
+        bui.inherits(action, bui.Action);
+        //实例化action
+        action = new action();
     }
-    if(action.id){
-        bui.Action.map[action.id] = action;
+    //传进来的是一个单例object
+    else {
+        if(Object.prototype.toString.call(action) == '[object String]'){
+            action = window[action];
+        }
+        
+        me = new bui.Action();
+        for (i in me) {
+            if(action[i]==undefined) action[i] = me[i];
+            
+        }
     }
     
-    me = new bui.Action();
-    for(i in me){
-        if(action[i]==undefined) action[i] = me[i];
-    }
-    
-    return action;
+    //建立action的索引
+    bui.Action.map[action.id] = action;
 };
+
 /**
  * 获取action
- * 获取控件用bui.Control.get(ids,ctr||action)
+ * 获取控件用bui.Control.get(id, ctr||action)
  */
 bui.Action.get = function(id){
     var map = bui.Action.map,
@@ -360,6 +339,4 @@ bui.Action.get = function(id){
     }
     return (id !== undefined ? map[id] : cur);
 };
-
-
 

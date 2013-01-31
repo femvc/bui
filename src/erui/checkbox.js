@@ -98,5 +98,6 @@ bui.Checkbox.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.Checkbox);
-
+//bui.Control.derive(bui.Checkbox);
+/* bui.Checkbox 继承了 bui.Control */
+bui.inherits(bui.Checkbox, bui.Control);

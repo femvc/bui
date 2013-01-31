@@ -297,5 +297,6 @@ bui.MultiSelect = (function() {
 })();
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.MultiSelect);
-
+//bui.Control.derive(bui.MultiSelect);
+/* bui.Label 继承了 bui.Control */
+bui.inherits(bui.Label, bui.Control);

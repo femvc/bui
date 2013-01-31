@@ -792,4 +792,6 @@ bui.ColorPalette.prototype = /** @lends {bui.ColorPalette.prototype} */ {
 };
 
 /*通过bui.Control派生*/
-bui.Control.derive(bui.ColorPalette);
+//bui.Control.derive(bui.ColorPalette);
+/* bui.ColorPalette 继承了 bui.Control */
+bui.inherits(bui.ColorPalette, bui.Control);

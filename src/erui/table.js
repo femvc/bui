@@ -1008,6 +1008,7 @@ bui.Table.prototype = {
 };
 
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.Table);
-
+//bui.Control.derive(bui.Table);
+/* bui.Table 继承了 bui.Control */
+bui.inherits(bui.Table, bui.Control);
 

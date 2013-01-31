@@ -27,7 +27,8 @@ bui.Router = {
         var me = this,
             pathRules = me.pathRules,
             i, len, matches, rule, props,
-            action = null;
+            action = null,
+            actionClazz;
         //匹配所有符合表达式的路径
         for ( i=0,len=pathRules.length;i<len;i++ ) {
             rule = pathRules[ i ].location;
@@ -43,12 +44,17 @@ bui.Router = {
             }
         }
         
-        if ( typeof action == 'string' && bui.Action.map[action] ) {        
-            action = bui.Action.map[action];
-        }        
+        if ( typeof action == 'string' ) {        
+            action = bui.getObjectByName(action);
+        }
         
-        if ( !action ) { 
-            me.error('Path "'+loc+'" not exist.'); 
+        if (action instanceof Function) {
+            action = new action();
+            bui.Action.map[action.id] = action;
+        }
+        
+        if ( !action || !action.enterAction ) { 
+            throw new Error('Path "'+loc+'" not exist.'); 
         }
         
         return action;
@@ -67,7 +73,7 @@ bui.Router = {
         } );
     },
     /**
-     * 读取所有rule
+     * 载入完成读取所有rule
      *
      * @protected
      * @param {String} rule 路径

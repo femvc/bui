@@ -14,10 +14,8 @@
  *
  * @param {Object} options 控件初始化参数.
  */
-bui.TextInput = function(options) {
-    this.initOptions(options);
+bui.TextInput = function() {
     this.form = 1;
-
     var value = this.value === 0 ? 0 : (this.value || '');
 };
 
@@ -110,7 +108,7 @@ bui.TextInput.prototype = {
                 me.formName = main.getAttribute('name');
 
                 // 绘制控件行为
-                bui.Control.render.call(me);
+                this.class.superClass.render.call(me);
 
                 // 绘制宽度和高度
                 if (me.width) {
@@ -237,4 +235,6 @@ bui.TextInput.prototype = {
     }
 };
 /*通过bui.Control派生bui.Button*/
-bui.Control.derive(bui.TextInput);
+//bui.Control.derive(bui.TextInput);
+/* bui.TextInput 继承了 bui.Control */
+bui.inherits(bui.TextInput, bui.Control);

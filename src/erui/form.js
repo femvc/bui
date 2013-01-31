@@ -48,4 +48,6 @@ bui.Form.prototype = {
 };
 
 /*通过bui.Control派生bui.Form*/
-bui.Control.derive(bui.Form);
+//bui.Control.derive(bui.Form);
+/* bui.Form 继承了 bui.Control */
+bui.inherits(bui.Form, bui.Control);
