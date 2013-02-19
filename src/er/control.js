@@ -558,7 +558,7 @@ bui.Control.prototype = {
             }
             //注: 如果isRendered为false则默认调用父类的渲染函数,子类的render中有异步情况需特殊处理!
             if (!uiObj.isRendered){
-                uiObj.class.superClass.prototype.render.call(uiObj);
+                uiObj.clazz.superClass.prototype.render.call(uiObj);
             }
             uiObj.endRenderTime = new Date();
         }
@@ -739,7 +739,7 @@ bui.Control.create = function ( type, options, opt_action, main) {
          * @comment 这里为什么不直接放到new uiClazz(options)里呢? 因为调用父类的构造函数会被覆盖掉.
          */
         uiClazz.call( uiObj, options );
-        uiObj.class = uiClazz;
+        uiObj.clazz = uiClazz;
         
         //设置默认main属性,这里设置既不覆盖new uiClazz(options)的设置,也便于后面render时重新设置
         if(uiObj.main == undefined) uiObj.main = main;

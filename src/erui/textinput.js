@@ -108,7 +108,7 @@ bui.TextInput.prototype = {
                 me.formName = main.getAttribute('name');
 
                 // 绘制控件行为
-                this.class.superClass.render.call(me);
+                this.clazz.superClass.render.call(me);
 
                 // 绘制宽度和高度
                 if (me.width) {

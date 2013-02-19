@@ -27,8 +27,8 @@ var Requester = {
                 function () {return new ActiveXObject('Microsoft.XMLHTTP');},
                 function () {return new ActiveXObject('Msxml2.XMLHTTP');}
             ];
-            
-        for (i = 0, len = methods.length; i < len; i++) {
+        i = (window.location.protocol == 'file:' && window.ActiveXObject)?1:0;//用于本地调试,IE下xmlhttp不能读取本地文本文件
+        for (len = methods.length; i < len; i++) {
             try {
                 xhr = methods[i]();
                 this.createOriginalXHRObject = methods[i];
@@ -87,7 +87,8 @@ var Requester = {
 
                 if (type != 'onsuccess') { 
                     window.setTimeout(function(){handler(xhr);}, 0); 
-                } else { 
+                } 
+                else { 
                     //处理获取xhr.responseText导致出错的情况,比如请求图片地址. 
                     try { 
                         xhr.xhr.responseText; 
@@ -122,7 +123,8 @@ var Requester = {
                             }
                         } 
                         window.setTimeout(function(){handler(data);}, 0); 
-                    }else{ 
+                    }
+                    else{ 
                         window.setTimeout(function(){handler(text);}, 0); 
                     } 
                 } 
@@ -214,7 +216,8 @@ var Requester = {
                     } 
                 }
                 catch (e) {
-                    alert(e);
+                    debugger;
+                    alert(e.message?e.message:String(e));
                 }
 
         
@@ -250,7 +253,8 @@ var Requester = {
                 if (!async) { 
                     stateChangeHandler.call(xhr); 
                 } 
-            } catch (ex) { 
+            } 
+            catch (ex) { 
                 xhr.fire('failure'); 
             } 
         }
