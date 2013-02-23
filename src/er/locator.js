@@ -4,31 +4,43 @@
  * Copyright 2011 Baidu Inc. All rights reserved.
  *
  * path:    locator.js
- * desc:    Location变化监听器
+ * desc:    Locator主要功能是监听Location的变化, 在URL发生变化的时候保存历史记录并通知Controller.
  * author:  Baidu FE
  * date:    2012/01/01 [用python脚本自动维护]
  */
 
+/** 
+ * @fileoverview 在浏览器中，更改url“#”号后面的hash内容时，页面不会发生跳转重新请求。利用这个特点，可以在hash中记录历史和实现url敏感。
+ * @author Baidu FE
+ * @version 0.1 
+ */
+
+
 /**
  * Location变化监听器
- * 
- * @引用依赖: 无
- * @对外接口: bui.Locator.onredirect();
- * @默认调用外部接口: bui.Controller.forward();
  *
- * @desc
- *      Locator = [ path ] [ ~ query ]
- *      path    = "/" [ *char *( "/" *char) ]
- *      query   = *qchar
- *      char    = ALPHA | DIGIT
- *      qchar   = char | "&" | "="
+ * @namespace
  */
 bui.Locator = {
-    //默认首次进入的路径
+    /**
+     * 默认首次进入的路径.
+     *
+     * @default '/'
+     * @public
+     */
     DEFAULT_INDEX:'/',
+    /**
+     * 当前路径.
+     *
+     * @public
+     */
     currentLocation:null,
+    /**
+     * 使用iframe兼容早期IE版本无法通过onhashchange保存浏览历史的问题.
+     *
+     * @private
+     */
     CONTROL_IFRAME_ID : 'ERHistroyRecordIframe' + String(Math.random()).replace('.',''),
-    CONTROL_IFRAME_URL: 'history.html',
     IFRAME_CONTENT  : '<html><head></head><body><input type="text" id="save">'
             + '<script type="text/javascript">'
             + 'var loc = "#{0}";'
@@ -37,11 +49,10 @@ bui.Locator = {
             + 'parent.bui.Locator.switchToLocation(loc);'
             + '<'
             + '/script ></body></html>',
-    inited: false,
     /**
      * 获取location信息
      * 
-     * @public
+     * @private
      * @return {string}
      */
     getLocation: function () {
@@ -133,12 +144,19 @@ bui.Locator = {
             // 当location未变化，强制刷新时，直接route
             if ( isLocChanged == false ) {
                 bui.Locator.switchToLocation( loc );
-            } else {
+            } 
+            else {
                 //location被改变了,非强制跳转
                 me.doRoute( loc );
             }
         }
     },
+    /**
+     * 权限判断以及重定向
+     * 
+     * @private
+     * @param {string} loc location位置
+     */
     doRoute: function( loc ) {
         var me = this;
         // 权限判断以及转向
@@ -164,20 +182,22 @@ bui.Locator = {
      * @private
      */
     switchToLocation: function(loc){
-        
+        // 调用Controller的forward接口
         if (typeof bui != 'undefined' && bui.Controller && bui.Controller.forward) {
             bui.Controller.forward( loc );
         }
     },
     /**
-     * 外部接口
+     * onredirect事件外部接口
      * 
+     * @interface
      * @public
      */
     'onredirect': new Function(),
     /**
-     * 刷新当前地址
+     * 强制刷新当前地址
      * 
+     * @method
      * @public
      */
     'reload': function() {
@@ -189,6 +209,7 @@ bui.Locator = {
     /**
      * IE下调用router
      * 
+     * @method
      * @private
      * @param {string} loc 地址, iframe内容字符串的转义
      */
@@ -207,6 +228,7 @@ bui.Locator = {
     /**
      * 初始化locator
      *
+     * @method
      * @private
      */
     init: function() {
@@ -224,7 +246,8 @@ bui.Locator = {
     },
     /**
      * hash变化的事件监听器
-     *
+     * 
+     * @method
      * @private
      */
     changeListener: function() {
@@ -239,7 +262,8 @@ bui.Locator = {
     },    
     /**
      * ie下创建记录与控制跳转的iframe
-     *
+     * 
+     * @method
      * @private
      */
     ieCreateIframeRecorder: function() {
@@ -260,14 +284,18 @@ bui.Locator = {
         document.body.appendChild(iframe);
     },
     /**
-     * 权限规则列表
-     *
+     * 路径权限规则列表
+     * 
+     * @property
+     * @type {Array}
+     * @default []
      * @public
      */
     authorizers : [],
     /**
      * 增加权限验证器
-     *
+     * 
+     * @method
      * @public
      * @param {Function} authorizer 验证器，验证失败时验证器返回转向地址
      */
@@ -279,8 +307,9 @@ bui.Locator = {
     },
     /**
      * 权限验证
-     *
-     * @inner
+     * 
+     * @method
+     * @private
      * @return {string} 验证失败时验证器返回转向地址
      */
     authorize: function( currLoc ) {
