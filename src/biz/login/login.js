@@ -140,7 +140,7 @@ login.Signin.prototype = {
     }
 };
 
-bui.Controller.addModule(login);
+bui.Master.addModule(login);
 //派生自 bui.Action
 //bui.Action.derive(login.Signin);
 //bui.derive(login, bui.Action);

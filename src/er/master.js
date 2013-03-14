@@ -3,19 +3,19 @@
  * BUI(Baidu UI Library)
  * Copyright 2011 Baidu Inc. All rights reserved.
  *
- * path:    controller.js
+ * path:    master.js
  * desc:    控制器负责控制action跳转[包括多个action共存的情况]
  * author:  Baidu FE
  * date:    2012/01/01 [用python脚本自动维护]
  */
 /** 
  * @引用依赖: 无
- * @对外接口: bui.Controller.forward(url) 根据loc跳转到对应的action
+ * @对外接口: bui.Master.forward(url) 根据loc跳转到对应的action
  * @默认调用外部接口: bui.Router.findAction( loc ) 根据loc返回对应的action
  * @默认调用外部接口: action.enterAction() 进入指定action
  */
 ///import bui;
-bui.Controller = {
+bui.Master = {
     historyList:[],
     newRequest: null,
     ready: true,
@@ -69,7 +69,7 @@ bui.Controller = {
                 me.historyList.push(url);
                 action.enterAction(args);
             }
-            //Action渲染过程中禁止跳转
+            //Action渲染过程中禁止跳转，否则容易造成死循环。
             else {
                 me.ready = true;
             }
@@ -90,7 +90,7 @@ bui.Controller = {
             if(action && action.dispose) {
                 action.dispose();
             }
-            bui.Controller.ready = true;
+            bui.Master.ready = true;
             //后退一步
             bui.redirect(me.historyList.pop());
         }

@@ -39,7 +39,7 @@ bui.Permission = {
      * @desc 
      */
     checkRouter: function(url){
-        var loc = bui.Controller.parseLocator(url)['location'];
+        var loc = bui.Master.parseLocator(url)['location'];
         if (bui.context.get('logout') == 'true' && !bui.Permission.priorityList.logout[loc]){
             return '/login';
         }

@@ -6,13 +6,15 @@
 var Requester = {
     /**
      * 全局事件处理接口 注：不支持onsuccess
-     *
+     * 
+     * @public
      * @Map {'ontimeout':function(){},'onfailure':function(){}}
      */
     handler:{},
     /** 
      * 创建XMLHttpRequest对象 
      *
+     * @private
      * @return {XMLHttpRequest} XMLHttpRequest对象 
      * @description 使用缓存模式避免每次都检测浏览器类型
      */ 
@@ -38,18 +40,19 @@ var Requester = {
             }
         }
         if (!xhr) {
-            throw new Error(100000,'Requester.createXHRObject() fail. Your browser not support XHR.');
+            throw new Error(100000,'Requester.createXHRProxyObject() fail. Your browser not support XHR.');
         }
         
         return xhr;
     },
     /** 
-     * 预置XMLHttpRequest对象 
+     * 预置XMLHttpRequestProxy对象 
      *
-     * @return {XMLHttpRequest} XMLHttpRequest对象 
+     * @private
+     * @return {XMLHttpRequestProxy} XMLHttpRequestProxy对象 
      * @description 
      */ 
-    createXHRObject: function () {            
+    createXHRProxyObject: function () {            
         var me = this,
             xhr = {};
         xhr.xhr = me.createOriginalXHRObject();
@@ -63,6 +66,7 @@ var Requester = {
     /** 
      * 生成新的触发事件方法 
      *
+     * @private
      * @param {String} type 事件类型 
      */ 
     creatFireHandler: function(){
@@ -142,17 +146,19 @@ var Requester = {
     /**
      * 检测是否有空闲的XHR或创建新对象
      *
+     * @private
      * @after Requester
      * @comment 使用Facade外观模式修改Requester.request方法
      * 以增加路径权限判断
      */
     getValidXHR: function () {
         var me = this;
-        return me.createXHRObject();
+        return me.createXHRProxyObject();
     },
     /**
      * request发送请求
-     *
+     * 
+     * @private
      * @url {String} 请求的URL
      * @options {Map} POST的参数，回调函数，MD5加密等
      */ 
@@ -220,7 +226,7 @@ var Requester = {
                     alert(e.message?e.message:String(e));
                 }
 
-        
+                
                 stateChangeHandler = Requester.fn(me.createStateChangeHandler, xhr);
                 if (async) { 
                     xhr.xhr.onreadystatechange = stateChangeHandler; 
@@ -261,7 +267,8 @@ var Requester = {
     },
     /** 
      * readyState发生变更时调用 
-     *
+     * 
+     * @private
      * @ignore 
      */ 
     createStateChangeHandler: function() { 
@@ -338,6 +345,7 @@ var Requester = {
     /**
      * encodeMD5加密提交的数据
      *
+     * @private
      * @data {String} 需要加密的paramString
      * @return {String} 加密后的paramString
      */ 
@@ -356,8 +364,9 @@ var Requester = {
 Requester.blank = function(){};
 /** 
  * 为对象绑定方法和作用域
- * @param {Function|String} handler 要绑定的函数，或者一个在作用域下可用的函
-数名
+ * 
+ * @private
+ * @param {Function|String} handler 要绑定的函数，或者一个在作用域下可用的函数名
  * @param {Object} obj 执行运行时this，如果不传入则运行时this为函数本身
  * @param {args* 0..n} args 函数执行时附加到执行时函数前面的参数
  *
@@ -378,6 +387,7 @@ window.Requester = Requester;
 /**
  * 移除JSON字符串中多余的逗号如{'a':[',],}',],}
  *
+ * @public
  * @param {string} JSON字符串
  * @return {string} 处理后的JSON字符串
  */
@@ -448,6 +458,8 @@ Requester.removeJSONExtComma = function(str) {
 
 /**
  * 发送Requester请求
+ * 
+ * @public
  * @function
  * @grammar Requester.get(url, data[, onsuccess])
  * @param {string}     url         发送请求的url地址
@@ -469,6 +481,7 @@ Requester.postMD5 = function (url, data, onsuccess, action, async) {return Reque
 /**
  * 当后端验证失败时自动调用
  *
+ * @private
  * @data {Map} XHR返回的responseText
  * @return {void}
  */
@@ -499,27 +512,29 @@ Requester.pool =  [];
 Requester.poolsize = 20;
 /**
  * 来不及执行的XHR请求队列
- *
- * @after Requester
+ * 
+ * @private
  */
 Requester.que = [];
 /**
  * 修改XHR的request方法
- *
+ * 
+ * @private
  * @after Requester
  */
+//缓存Requester.request以供后面调用
 Requester.sendRequest = Requester.request;
+//修改Requester.request
 Requester.request = function(url, opt_options){
     //将请求放进队列
     this.que.push({'url':url,'options':opt_options});
     this.checkQue();
 };
-    
-
 
 /**
  * checkQue检查队列是否有等待的任务
- *
+ * 
+ * @private
  * @return {void} 
  */ 
 Requester.checkQue = function () {
@@ -536,6 +551,7 @@ Requester.checkQue = function () {
 /**
  * 检测是否有空闲的XHR或创建新对象
  *
+ * @private
  * @after Requester
  * @comment 使用Facade外观模式修改Requester.request方法
  * 以增加路径权限判断
@@ -556,7 +572,7 @@ Requester.getValidXHR = function () {
     }
     //假如没有空闲对象且请求池未满，则继续新建
     if (xhr == null && me.pool.length < me.poolsize) {
-        xhr = me.createXHRObject();
+        xhr = me.createXHRProxyObject();
         me.pool.push(xhr);
     }
 
@@ -578,7 +594,12 @@ Requester.getValidXHR = function () {
 /** 
  * JSONP回调接口MAP 
  */  
-Requester.proxy = {};  
+Requester.proxy = {};
+/**
+ * 发送JSONP请求
+ * 
+ * @public
+ */
 Requester.JSONP = function (url, data, onsuccess, action) {
     var me = this,
     //获取可用JSONP对象, 不存在则自动生成
@@ -602,6 +623,7 @@ Requester.getValidProxy = function() {
 /**
  * 工厂模式创建JSONP对象
  *
+ * @private
  * @param {id String} 唯一标识
  * @return {void} 
  */
@@ -628,6 +650,7 @@ Requester.createProxy = function(id){
 /**
  * 工厂模式创建JSONP对象回调接口
  *
+ * @private
  * @return {void} 
  */
 Requester.creatProxyCallback = function(){
@@ -703,43 +726,25 @@ function doit() {
     });
 }
 */
-
+/**
+ * 增加Mockup拦截器
+ * 
+ * @private
+ * @return {null||String} null或新url
+ */
 Requester.beforeRequest = function (url, opt_options) {
     //检查请求的资源是否有权限
     if (bui.Permission && bui.Permission.checkRequest && bui.Permission.checkRequest(url, opt_options) == 'notpermit') {
         return null;
     }
     
+    var result = url;
     //检查是否启用了mockup
-    if (bui.Mockup && bui.Mockup.maps[url]) {
-        var target = bui.Mockup.maps[url];
+    if (bui.Mockup && bui.Mockup.find(url)) {
+        if(window.console && window.console.log){window.console.log(url);}
         
-        //mockup是函数
-        if (Object.prototype.toString.call(target)==='[object Function]') {
-            target(url, opt_options);
-        }
-        //mockup是数组
-        else if (Object.prototype.toString.call(target)==='[object Array]') {
-            if (target.length>0) {
-                opt_options['onsuccess'](target[(new Date()).getTime()%target.length])
-            }
-            else {
-                opt_options['onsuccess'](target);
-            }
-        }
-        //mockup是对象
-        else if (Object.prototype.toString.call(target)==='[object Object]') {
-            opt_options['onsuccess'](target);
-        }
-        //mockup不是字符串
-        else if (typeof target != 'string') {
-            opt_options['onsuccess'](target);
-        }
-        //mockup是字符串(url)的话直接返回
-        else {
-            return target;
-        }
+        result = bui.Mockup.get(url, opt_options);
     }
     
-    return url;
-}
+    return result;
+};

@@ -8,6 +8,19 @@
  * author:  Baidu FE
  * date:    2012/01/01 [用python脚本自动维护]
  */
+ 
+/** 
+ * @fileoverview 在浏览器中，更改url“#”号后面的hash内容时，页面不会发生跳转重新请求。利用这个特点，可以在hash中记录历史和实现url敏感。
+ * @author Baidu FE
+ * @version 0.1 
+ */
+
+
+/**
+ * Location变化监听器
+ *
+ * @namespace
+ */
 /** 
  * @引用依赖: 无
  * @对外接口: bui.Locator.findAction(loc) 根据loc返回对应的action
@@ -20,7 +33,7 @@ bui.Router = {
     /**
      * 根据location找到匹配的rule并返回对应的action
      *
-     * @protected
+     * @public
      * @param {String} loc 路径
      */
     findAction: function( loc ) {
@@ -62,14 +75,14 @@ bui.Router = {
     /**
      * 设置rule
      *
-     * @protected
+     * @public
      * @param {String} rule 路径
-     * @param {String} func 对应action
+     * @param {String} action 对应action
      */
-    setRule: function ( rule, func ) {
+    setRule: function ( rule, action ) {
         this.pathRules.push( {
             'location'  : rule,
-            'action' : func
+            'action' : action
         } );
     },
     /**
@@ -84,8 +97,8 @@ bui.Router = {
             i, len, j, len2,
             module, actions, actionConfig, 
             pathRules = {};
-        if (!modules && bui && bui.Controller && bui.Controller.moduleContainer) {
-            modules = bui.Controller.moduleContainer;
+        if (!modules && bui && bui.Master && bui.Master.moduleContainer) {
+            modules = bui.Master.moduleContainer;
         }
         if (modules && modules.length) {
             for ( i = 0, len = modules.length; i < len; i++) {
@@ -97,7 +110,7 @@ bui.Router = {
                         actionConfig = actions[j];
                         
                         if ( actionConfig && actionConfig.location && actionConfig.action ) {
-                            me.pathRules.push( actionConfig );
+                            me.setRule( actionConfig.location, actionConfig.action );
                         }
                     }
                 }

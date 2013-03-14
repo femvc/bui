@@ -18,6 +18,7 @@ bui.BaseModel = function(data) {
     var _model = {};
     /**
      * 设置新的值，如果两个值不同，就会触发PropertyChangedEvent.
+     * 
      * @param {string|object} propertyName 需要设置的属性或数据对象.
      * @param {*} value 属性的值.
      * @comment 接受`"key", value` 和 `{key: value}`两种的方式赋值.
@@ -32,13 +33,17 @@ bui.BaseModel = function(data) {
             ids,
             className = Object.prototype.toString.call(propertyName);
         
-        if (className == '[object Object]' && className == '[object String]') {
+        if ((className !== '[object Object]' && className !== '[object String]') || 
+            (className === '[object Object]' && newValue !== undefined)) {
             return this.trigger('SET_ERROR', propertyName, newValue);
         }
         
         if (className == '[object String]') {
             attrs = {};
             attrs[propertyName] = newValue;
+        }
+        else {
+            attrs = propertyName;
         }
         
         for (attr in attrs) {
@@ -62,13 +67,39 @@ bui.BaseModel = function(data) {
     };
 
     /**
+     * 获取指定属性值
+     * 
      * @param {string} propertyName 属性名.
      * @return {*} 属性的值.
      */
     this.get = function(propertyName) {
         return bui.clone(_model[propertyName]);
     };
-
+    /**
+     * 获取所有的属性值
+     * 
+     * @return {hashmap} 所有的属性值.
+     */
+    this.getData = function(){
+        return bui.clone(_model);
+    };
+    /**
+     * 移除指定属性值
+     * 
+     * @param {string} propertyName 属性名.
+     * @return {*} 属性的值.
+     */
+    this.remove = function(propertyName) {
+        var value = _model[propertyName];
+        this.set(propertyName, undefined);
+        delete _model[propertyName];
+        return value;
+    };
+    /**
+     * 销毁Model
+     * 
+     * @return {void}
+     */
     this.dispose = function(){
         this._listeners = undefined;
         _model = undefined;

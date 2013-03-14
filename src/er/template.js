@@ -20,30 +20,44 @@ bui.Template = {
     /**
      * 根据模板url列表载入相应HTML模板文件
      * 
+     * @public
      * @param {string} tplList 模板文件URL列表
      *             
      * @returns void
      */
-    loadTemplate: function(){
-        var me = this, i, len,
-            tplList = bui.config.TEMPLATE_LIST;
+    loadAllTemplate: function(){
+        var me = this, 
+            i, len,
+            tplList = me.TEMPLATE_LIST;
         
         for (i=0,len=tplList.length; i<len; i++){
             if(tplList[i]){
-                Requester.get(tplList[i],'',bui.Template.callback);
+                bui.Template.loadTemplate(tplList[i]);
             }
         }
     },
     /**
-     * 模板加载回调事件接口
+     * 根据url载入相应HTML模板文件
      * 
      * @public
+     * @param {string} url 模板文件URL
+     *             
+     * @returns void
+     */
+    loadTemplate: function(url){
+        Requester.get(url, '', bui.Template.callback);
+    },
+    /**
+     * 模板加载回调事件接口
+     * 
+     * @private
+     * @text {String} 模板字符串
      */
     callback: function(text){
-        bui.config.loadedCount++;
+        bui.Template.loadedCount++;
         
         bui.Template.parseTemplate(text);
-        if(bui.config.loadedCount >= bui.config.TEMPLATE_LIST.length){
+        if(bui.Template.loadedCount >= bui.Template.TEMPLATE_LIST.length){
             bui.Template.onload();
         }
     },
@@ -56,6 +70,7 @@ bui.Template = {
     /**
      * 解析模板字符串流[增加target]
      * 
+     * @public
      * @param {string} tplStr 模板字符串流tpl:<!-- target:mergeTest -->hello ${myName}!
      * @param {Object|string...} opts 提供相应数据的对象或多个字符串
      *             
@@ -104,6 +119,7 @@ bui.Template = {
     /**
      * 获取Target
      * 
+     * @public
      * @param {string} targetName Target名字
      *             
      * @returns {string} 未解析的target
@@ -120,6 +136,7 @@ bui.Template = {
     /**
      * 依赖于me.originTargetContainer循环解析targetList中的target
      * 
+     * @public
      * @param {string} tplStr 模板字符串流tpl:<!-- target:mergeTest -->hello ${myName}!
      * @param {Object|string...} opts 提供相应数据的对象或多个字符串
      *             

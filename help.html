@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Help</title>
 <script type="text/javascript" src="src/er/bui.js               "></script>
-<script type="text/javascript" src="src/er/controller.js        "></script>
+<script type="text/javascript" src="src/er/master.js            "></script>
 <script type="text/javascript" src="src/er/template.js          "></script>
 <script type="text/javascript" src="src/er/control.js           "></script>
 <script type="text/javascript" src="src/er/action.js            "></script>
@@ -38,7 +38,7 @@
             }
         ]
     };
-    bui.Controller.addModule(hello);
+    bui.Master.addModule(hello);
     
     bui.Template.parseTemplate('<!-- target:hello -->hello ${name}');
     //er.config.TEMPLATE_LIST = ['tpl.html'];

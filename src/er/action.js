@@ -99,57 +99,81 @@ bui.Action.prototype = {
         //创建一个异步队列     
         que = bui.asyque();
         que.push(function(callback){var me = this;
+            
             //开始执行Action的处理流程
-            me.trigger('BEFORE_ENTER_ACTION', me);
+            me.trigger('ENTER_ACTION', me);
+            
             //默认创建一个DIV作为主元素
             if(!me.main && document && document.createElement){
-                if(bui.g('main')) {
+                if (bui.g('main')) {
                     me.main = bui.g('main');
-                }else{
+                }
+                else{
                     me.main = document.createElement('DIV');
                     document.body.appendChild(me.main);
                 }
             }
             me.main.action = me;    
-            
+            //保存通过URL传过来的参数
             me.args = args;
+            
+            //判断model是否存在，不存在则新建一个
+            if (!me.model) {
+                me.model = new bui.BaseModel();
+            }
+            
+            me.trigger('LOAD_MODEL', me);
             var k;
             // 先将PARAM_MAP中的key/value装入model
-            for(k in me.PARAM_MAP){ if(k){ me.model[k] = me.PARAM_MAP[k]; }}
-            //初始化Model
-            for(k in me.args){ if(k){ me.model[k] = me.args[k]; }}
-                
-            me.trigger('BEFORE_INIT_MODEL', me);
+            for(k in me.PARAM_MAP){ 
+                if(k){ 
+                    me.model.set(k, me.PARAM_MAP[k]); 
+                }
+            }
         
         callback&&callback();}, me);
         
         //初始化Model
         que.push(me.initModel,me);
+        
+        que.push(function(callback){var me = this;
+        
+            //触发MODEL_LOADED事件
+            me.trigger('MODEL_LOADED', me);
+            //触发LOAD_VIEW事件
+            me.trigger('LOAD_VIEW', me);
+        
+        callback&&callback();}, me);
+        
         //初始化View
         que.push(me.initView,me);
+        
+        que.push(function(callback){var me = this;
+            //触发VIEW_LOADED事件
+            me.trigger('VIEW_LOADED', me);
+            
+        callback&&callback();}, me);
         
         que.push(function(callback){var me = this;
             //渲染视图
             me.trigger('BEFORE_RENDER', me);
             me.render();
             if(!me.rendered && typeof bui !== 'undefined' && bui && bui.Template && me.main){
-                var mainHTML = bui.Template.merge(bui.Template.getTarget(me.getView()), me.model);
+                var mainHTML = bui.Template.merge(bui.Template.getTarget(me.getView()), me.model.getData());
                 me.main.innerHTML = mainHTML;
                 me.rendered = true;
             }
             //渲染当前view中的控件
             bui.Control.init(me.main, me.model, me);
             me.trigger('AFTER_RENDER', me);
-           
-
             
             //控件事件绑定
             me.initBehavior(me.controlMap);
-            me.checkAuthority();
-            me.trigger('READY', me);
+            //me.checkAuthority();
+            me.trigger('ACTION_READY', me);
 
             bui.Mask.hideLoading();
-            bui.Controller.checkNewRequest();
+            bui.Master.checkNewRequest();
         
         callback&&callback();}, me);
 
@@ -188,7 +212,7 @@ bui.Action.prototype = {
      * 根据当前用户权限进行相应设置
      *
      */
-    checkAuthority: function(){},
+    //checkAuthority: function(){},
     
     /**
      * 模型属性发生变化事件监听器
@@ -246,7 +270,10 @@ bui.Action.prototype = {
             controlMap = me.controlMap,
             main = me.main,
             model = me.model;
-
+        
+        me.trigger('BEFORE_LEAVE', me);
+        me.leave();
+        
         // dispose子控件
         if (controlMap) {
             for (var k in controlMap) {
@@ -262,6 +289,7 @@ bui.Action.prototype = {
             main.onmouseout = null;
             main.onmousedown = null;
             main.onmouseup = null;
+            
             if (main.innerHTML){
                 main.innerHTML = '';
             }
@@ -274,6 +302,7 @@ bui.Action.prototype = {
         }
         
         me.rendered = null;
+        me.trigger('LEAVE', me);
     },
     /**
      * 后退
@@ -281,8 +310,15 @@ bui.Action.prototype = {
      * @protected
      */
     back: function() {
-        bui.Controller.back();
-    }
+        bui.Master.back();
+    },
+    /**
+     * 退出
+     *
+     * @public
+     */
+    leave: function() {}
+
 };
 
 bui.inherits(bui.Action, bui.EventDispatcher);

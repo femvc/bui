@@ -177,14 +177,14 @@ bui.Locator = {
         }
     },
     /**
-     * Location变化内部调用接口
+     * Location变化调用接口
      * 
-     * @private
+     * @public
      */
     switchToLocation: function(loc){
         // 调用Controller的forward接口
-        if (typeof bui != 'undefined' && bui.Controller && bui.Controller.forward) {
-            bui.Controller.forward( loc );
+        if (typeof bui != 'undefined' && bui.Master && bui.Master.forward) {
+            bui.Master.forward( loc );
         }
     },
     /**
@@ -228,8 +228,7 @@ bui.Locator = {
     /**
      * 初始化locator
      *
-     * @method
-     * @private
+     * @public
      */
     init: function() {
         var me = this,

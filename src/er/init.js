@@ -41,9 +41,9 @@ bui.init = function(){
      * 
      * @private
      */
-    if (bui.Template && bui.Template.loadTemplate && bui.config && bui.config.TEMPLATE_LIST) {
+    if (bui.Template && bui.Template.loadAllTemplate && bui.Template.TEMPLATE_LIST) {
         que.push(function(callback){
-            bui.Template.loadTemplate();
+            bui.Template.loadAllTemplate();
             bui.Template.onload = callback;
         });
     }
@@ -75,9 +75,9 @@ bui.Template.finishLoad = function(callback){
     callback&&callback();
 
     //防止onload再次执行
-    if (bui.config) {
-        bui.config.loadedCount = -100000;
-        delete bui.config.loadedCount;
+    if (bui.Template) {
+        bui.Template.loadedCount = -100000;
+        delete bui.Template.loadedCount;
     }
     
     //2.初始化路由列表

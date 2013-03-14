@@ -9,7 +9,10 @@
  * date:    2012/01/01 [用python脚本自动维护]
  */
 
-bui.context = {
+bui.context = new bui.BaseModel({});
+    
+/*    
+ {
     context: {},
     get: function (k){
         return this.context[k];
@@ -21,7 +24,7 @@ bui.context = {
         return v;
     }
 };
-
+*/
     
    
 

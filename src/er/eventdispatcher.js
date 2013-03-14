@@ -47,8 +47,18 @@ bui.EventDispatcher.prototype = {
                 break;
             }
         }
+        if (listener === undefined) {
+            this._listeners[eventType] = [];
+        }
     },
-
+    /**
+     * 清除所有监听器
+     *
+     * @public
+     */
+    clear: function() {
+        this._listeners = [];
+    },
     /**
      * 触发事件
      *

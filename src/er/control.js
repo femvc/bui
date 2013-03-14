@@ -74,7 +74,7 @@ bui.Control.prototype = {
     /**
      * 获取dom子部件的id
      *
-     * @protected
+     * @public
      * @return {string}
      */
     getId: function(key) {
@@ -92,7 +92,7 @@ bui.Control.prototype = {
     /**
      * 渲染控件
      *
-     * @protected
+     * @public
      * @param {HTMLElement} main 控件挂载的DOM.
      * @param {boolean} autoState 是否挂载自动状态转换的处理.
      */
@@ -252,6 +252,8 @@ bui.Control.prototype = {
 
     /**
      * 验证控件的值
+     * 
+     * @public
      */
     validate: function() {
         var me = this,
@@ -281,7 +283,12 @@ bui.Control.prototype = {
         
         return result;
     },
-    getParamMap: function(paramMap){
+    /**
+     * 获取控件的值，返回一个map
+     * 
+     * @public
+     */
+     getParamMap: function(paramMap){
         var me = this,
             paramMap = paramMap || {},
             i,   
@@ -299,6 +306,11 @@ bui.Control.prototype = {
         
         return paramMap;
     },
+    /**
+     * 获取控件的值，返回一个string
+     * 
+     * @public
+     */
     getParamString: function() {
         var me = this,
             paramString = [],
@@ -762,6 +774,7 @@ bui.Control.create = function ( type, options, opt_action, main) {
 /**
  * 父控件添加子控件
  *
+ * @public
  * @param {Control} uiObj 子控件.
  */
 bui.Control.appendControl = function(parent, uiObj) {
@@ -779,6 +792,7 @@ bui.Control.appendControl = function(parent, uiObj) {
 /**
  * 获取所有子节点element
  *
+ * @public
  * @param {Object} control
  */
 bui.Control.findAllNodes = function(main){
@@ -808,6 +822,7 @@ bui.Control.findAllNodes = function(main){
 /**
  * 获取action下所有控件
  *
+ * @public
  * @param {Object} control
  */
 bui.Control.findAllControl = function(action){
@@ -842,6 +857,8 @@ bui.Control.findAllControl = function(action){
 //bui.Control.elemList = [];
 /**
  * 根据控件id找到对应控件
+ * 
+ * @public
  * @parent可不传,默认从当前Action开始找
  * @id 控件ID
  * @param {String} 控件id
@@ -876,6 +893,7 @@ bui.Control.get = function(id, parent){
 /**
  * 根据控件formName找到对应控件
  *
+ * @public
  * @param {String} 控件formName
  */
 bui.Control.getByFormName = function(id, parentControl){
@@ -912,6 +930,7 @@ bui.Control.getByFormName = function(id, parentControl){
 /**
  * 为目标元素添加className
  * 
+ * @public
  * @param {HTMLElement|string} element 目标元素或目标元素的id
  * @param {string} className 要添加的className，允许同时添加多个class，中间使用空白符分隔
  * @remark
@@ -939,6 +958,7 @@ bui.Control.removeClass = function(element, className) {
 /**
  * 对目标字符串进行格式化
  * 
+ * @public
  * @param {string} source 目标字符串
  * @param {Object|string...} opts 提供相应数据的对象或多个字符串
  *             
