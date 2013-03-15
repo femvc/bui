@@ -57,5 +57,4 @@ bui.Mockup = {
 };
 bui.Mockup.maps = {};
 
-bui.Mockup.set('/login/sign.action', 'mockup/login!sign.json');
-bui.Mockup.set('/users/info.action', 'mockup/users!info.json');
+bui.Mockup.set('/book/list.action',  'mockup/book!list.json');

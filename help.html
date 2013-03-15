@@ -30,15 +30,13 @@
     bui.Action.derive(hello.action);
     
     //配置路径
-    hello.config = {
-        'action': [
-            {
-                location: '/hello',
-                action: hello.action
-            }
-        ]
-    };
-    bui.Master.addModule(hello);
+    hello.action = [
+        {
+            location: '/hello',
+            action: hello.action
+        }
+    ];
+    bui.Action.addModule(hello);
     
     bui.Template.parseTemplate('<!-- target:hello -->hello ${name}');
     //er.config.TEMPLATE_LIST = ['tpl.html'];

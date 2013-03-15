@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${Product_name:lang}</title>
+<link rel="stylesheet" type="text/css" href="common/css/style.css" />
+</head>
+
+<body>
+<!--target:loadingDiv-->
+    <div class="loading_div">
+        <div class="waitDiv">
+            <div class="waitDiv_content">
+
+                <div class="loading-inner">
+                    <img src="common/img/loading.gif" width="32" height="32">
+                    <div class="loading-text">${Loading_txt:lang}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="loading_ifra" class="loading_ifra"></iframe>
+
+<!--target:booklist-->
+
+    <h2 style="margin-bottom:0px;">在线书店</h2>
+    <ul>
+        <li><a href="#/booklist">图书列表</a></li>
+        <li><a href="#/bookcart">购物车</a></li>
+    </ul>
+    <div style="width:500px;">
+    <div ui="type:Table;id:bookListTable;sortable:true;fields:@bookListFields;datasource:@bookListDatasource;bodyHeight:210;"></div>
+    </div>
+
+<!--target:bookcart-->
+
+    <h2 style="margin-bottom:0px;">购物车</h2>
+    <ul>
+        <li><a href="#/booklist">图书列表</a></li>
+        <li><a href="#/bookcart">购物车</a></li>
+    </ul>
+    <div style="width:500px;">
+    <div ui="type:Table;id:bookListTable;sortable:true;fields:@bookListFields;datasource:@bookListDatasource;bodyHeight:210;"></div>
+    </div>
+
+<!--target:bookinfo-->
+
+    <h2 style="margin-bottom:0px;">图书信息</h2>
+    <ul>
+        <li><a href="#/booklist">图书列表</a></li>
+        <li><a href="#/bookcart">购物车</a></li>
+    </ul>
+    <div style="width:500px;">
+    <h3>书名：${name}</h3>
+    <ul>
+        <li>ISBN：${isbn}<br/>
+        <li>作者：${author}<br/>
+        <li>价格：${price}<br/>
+    </ul>
+    <a onclick="bui.Action.get().buy('${isbn}',this)" href="javascript:">${ordered}</a>
+    <div 00ui="type:Table;id:bookListTable;sortable:true;fields:@bookListFields;datasource:@bookListDatasource;bodyHeight:210;"></div>
+    </div>
+
+<!--target:blank-->
+
+</body>
+
+</html>
+

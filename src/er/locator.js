@@ -182,7 +182,7 @@ bui.Locator = {
      * @public
      */
     switchToLocation: function(loc){
-        // 调用Controller的forward接口
+        // 调用Master的forward接口
         if (typeof bui != 'undefined' && bui.Master && bui.Master.forward) {
             bui.Master.forward( loc );
         }

@@ -187,16 +187,10 @@ bui.clone = function(source, oldArr, newArr) {
     oldArr = oldArr || [];
     newArr = newArr || [];
     
-    if (!source
-        || source instanceof Number
-        || source instanceof String
-        || source instanceof Boolean) {
-        return result;
-    } 
-    else if (source instanceof Date) {
+    if (source instanceof Date) {
         result = new Date(source.getTime());
     } 
-    else if ((source instanceof Array) || ('object' == typeof source)) {
+    else if ((source instanceof Array) || (Object.prototype.toString.call(source) == '[object Object]')) {
         for (j=0,len2=oldArr.length; j<len2; j++) {
             if (oldArr[j] == source) {
                 exist = j;
@@ -217,7 +211,7 @@ bui.clone = function(source, oldArr, newArr) {
                     result[resultLen++] = bui.clone(source[i], oldArr, newArr);
                 }
             }
-            if ('object' == typeof source) {
+            else if (!!source && Object.prototype.toString.call(source) == '[object Object]') {
                 result = {};
                 oldArr.push(source);
                 newArr.push(result);
@@ -228,7 +222,7 @@ bui.clone = function(source, oldArr, newArr) {
                 }
             }
         }
-    } 
+    }
 
     return result;
 };

@@ -55,7 +55,6 @@ document.write('<script type="text/javascript" src="src/erui/color-palette-float
  *
  * @public
  */
-document.write('<script type="text/javascript" src="src/biz/cb/cb.js                "></script>');
 document.write('<script type="text/javascript" src="mockup/!!mocklist.js        "></script>');
 document.write('<script type="text/javascript" src="asset/templist.js           "></script>');
 
@@ -64,11 +63,14 @@ document.write('<script type="text/javascript" src="asset/templist.js           
  *
  * @public
  */
-document.write('<script type="text/javascript" src="src/biz/user/userinfo.js        "></script>');
-document.write('<script type="text/javascript" src="src/biz/user/userpoints.js      "></script>');
-document.write('<script type="text/javascript" src="src/biz/user/usercontact.js     "></script>');
-document.write('<script type="text/javascript" src="src/biz/user/useraccount.js     "></script>');
-document.write('<script type="text/javascript" src="src/biz/login/login.js          "></script>');
+/*document.write('<script type="text/javascript" src="biz/cb/cb.js                "></script>');
+document.write('<script type="text/javascript" src="biz/user/userinfo.js        "></script>');
+document.write('<script type="text/javascript" src="biz/user/userpoints.js      "></script>');
+document.write('<script type="text/javascript" src="biz/user/usercontact.js     "></script>');
+document.write('<script type="text/javascript" src="biz/user/useraccount.js     "></script>');
+document.write('<script type="text/javascript" src="biz/login/login.js          "></script>');
+*/
+document.write('<script type="text/javascript" src="biz/book/list.js        "></script>');
                                                         
 //注: 文件加载完后,通过 bui.init();启动框架
 

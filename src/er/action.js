@@ -10,6 +10,8 @@
  */
 
 bui.Action = function(options){
+    //防止重复执行!!
+    if (this.baseConstructed) {return this;}
     bui.EventDispatcher.call(this);
     /**
      * Action的页面主元素[容器]
@@ -50,12 +52,13 @@ bui.Action = function(options){
     this.type = 'action';
     
     //保存参数
-    if (options && options.id) {
+    if (options) {
         this.initOptions(options);
-        //主要用new Action({id:XXX,view:XXX})时建立action的索引.
-        //注: 如果不是new Action({})的方式创建, 则bui.Action.map[this.id]在bui.Action.derive()里会覆盖掉这里设置的值
-        bui.Action.map[this.id] = this;
     }
+    //是否执行过构造过程
+    this.baseConstructed = true;
+    
+    bui.Action.addInstance(this);
 };
 
 bui.Action.prototype = {
@@ -84,8 +87,10 @@ bui.Action.prototype = {
         if(typeof view === 'function'){
             view = view();
         }
-        
-        return String(view);
+        if (bui && bui.Template && bui.Template.getTarget) {
+            view = bui.Template.getTarget(String(view));
+        }
+        return view;
     },
     /**
      * Action的主要处理流程
@@ -159,7 +164,7 @@ bui.Action.prototype = {
             me.trigger('BEFORE_RENDER', me);
             me.render();
             if(!me.rendered && typeof bui !== 'undefined' && bui && bui.Template && me.main){
-                var mainHTML = bui.Template.merge(bui.Template.getTarget(me.getView()), me.model.getData());
+                var mainHTML = bui.Template.merge(me.getView(), me.model.getData());
                 me.main.innerHTML = mainHTML;
                 me.rendered = true;
             }
@@ -303,6 +308,8 @@ bui.Action.prototype = {
         
         me.rendered = null;
         me.trigger('LEAVE', me);
+        
+        me.clearListener();
     },
     /**
      * 后退
@@ -318,15 +325,41 @@ bui.Action.prototype = {
      * @public
      */
     leave: function() {}
-
 };
 
 bui.inherits(bui.Action, bui.EventDispatcher);
 /**
  * Action的静态属性[索引Action]
  */
-bui.Action.map = {};
-
+bui.Action.map = [];
+/**
+ * 索引Action类派生出action
+ *
+ * @param {Object} action 对象
+ * @public
+ */
+bui.Action.addInstance = function(action){
+    if(bui.Action.get[action.id] && window.console) {
+        window.console.error('Action ID: "'+action.id+'" already exist.');
+    }
+    
+    bui.Action.map.push(action);
+};
+/**
+ * 移除action的索引
+ *
+ * @param {Object} action 对象
+ * @public
+ */
+bui.Action.removeActionIndex = function(action){
+    var map = bui.Action.map,
+        i;
+    for (i in map) {
+        if (map[i] == action) {
+            map[i] = undefined;
+        }
+    }
+};
 /**
  * 通过Action类派生出action
  *
@@ -335,28 +368,29 @@ bui.Action.map = {};
  */
 bui.Action.derive = function(action){
     var me,
-        i;
-    //传进来的是function
-    if (action.prototype) {
+        i,
+        instance,
+        func = function(){};
+    //传进来的是一个Function
+    if(Object.prototype.toString.call(action) == '[object Function]'){
         bui.inherits(action, bui.Action);
-        //实例化action
-        action = new action();
+        bui.inherits(func, action);
+        
+        instance = new func();
+        bui.Action.call(instance);
+        action.call(instance);
     }
     //传进来的是一个单例object
-    else {
-        if(Object.prototype.toString.call(action) == '[object String]'){
-            action = window[action];
-        }
-        
+    else if(Object.prototype.toString.call(action) == '[object String]'){
+        action = window[action];
+    
         me = new bui.Action();
         for (i in me) {
-            if(action[i]==undefined) action[i] = me[i];
-            
+            if(action[i] === undefined){
+                action[i] = me[i];
+            }
         }
     }
-    
-    //建立action的索引
-    bui.Action.map[action.id] = action;
 };
 
 /**
@@ -366,13 +400,114 @@ bui.Action.derive = function(action){
 bui.Action.get = function(id){
     var map = bui.Action.map,
         action,
-        i,
+        i,v,
         cur;
     for (i in map) {
-        if (map[i] && map[i].main && map[i].main.id == 'main') {
+        v = map[i];
+        if (id !== undefined && v && v.id !== undefined && v.id == id) {
+            action = map[i];
+        }
+        if (v && v.main && v.main.id == 'main') {
             cur = map[i];
         }
     }
-    return (id !== undefined ? map[id] : cur);
+    return (id !== undefined ? action : cur);
+};
+/**
+ * 根据action的构造类或单例来从索引中找到已存在的action实例
+ * 
+ * @param {Function|Object} actionName action的单例或构造类
+ */
+bui.Action.getByActionName = function(actionName){/*接收参数:'字符串'|'Action子类'|'单例'，返回action实例*/
+    var map = bui.Action.map,
+        action = null,
+        i,
+        v,
+        type;
+    if (actionName) {
+        if (Object.prototype.toString.call(actionName) === '[object String]') {        
+            actionName = bui.getObjectByName(actionName);
+        }
+        t = Object.prototype.toString.call(actionName);
+        for (i in map) {
+            v = map[i];
+            if ((t === '[object Object]' && v === actionName) || 
+                (t === '[object Function]' && (v instanceof actionName))) {
+                action = map[i];
+            }
+        }
+    }
+    
+    return action;
 };
 
+/**
+ * 用于组织Action的Module列表
+ */
+bui.Action.moduleContainer = [];
+/**
+ * 添加模块Module
+ *
+ * @public
+ * @param {Object} module 注册的模块.
+ */
+bui.Action.addModule = function(module) {
+    bui.Action.moduleContainer.push(module);
+};
+
+/*============================================
+ * 404 page
+ ============================================*/
+var page404;
+page404 = function(){
+    bui.Action.call(this);
+    /**
+     * Action索引ID
+     * 
+     * @comment 主要用于控件中通过onclick="bui.Control.get('listTable','login');
+     */
+    this.id = 'page404';
+    /**
+     * 初始化数据模型
+     */
+    //使用了getView这里可以不用设置view属性
+    //this.view = 'page404';
+    /**
+     * 初始化数据模型
+     */
+    this.model = new bui.BaseModel();
+    
+};
+
+page404.prototype = {
+    getView: function(){
+        var str = '<div style="font-size:10pt;line-height:1.2em;"><h3 style="margin:0px;line-height:3em;">The page cannot be found</h3>'
+            +'<p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>'
+            +'<p>Please try the following:</p>'
+            +'<ul><li>If you typed the page address in the Address bar, make sure that it is spelled correctly.<br/></li>'
+            +'<li>Open the <a href="#/">home page</a>, and then look for links to the information you want.</li>'
+            +'<li>Click the <a href="javascript:history.go(-1)">Back</a> button to try another link. </li>'
+            +'</ul><p><br></p>HTTP 404 - File not found<br />Need any help? This service is free.<br /></div>';
+        return str;
+    },
+    initModel: function(callback){
+        var me = this;
+        callback&&callback();
+    },
+    /**
+     * 初始化列表行为
+     *
+     * @param {Object} controlMap 当前主内容区域绘制的控件集合.
+     */
+    initBehavior: function(controlMap) {
+        var me = this;
+        
+    }
+};
+bui.inherits(page404, bui.Action);
+
+bui.Action.addModule({
+    action: [
+        {'location':'/404','action': 'page404'}
+    ]
+});

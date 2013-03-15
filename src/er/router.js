@@ -23,7 +23,7 @@
  */
 /** 
  * @引用依赖: 无
- * @对外接口: bui.Locator.findAction(loc) 根据loc返回对应的action
+ * @对外接口: bui.Locator.findAction(loc) 根据loc返回对应的action，实例不存在则会自动创建一个!!
  * @对外接口: bui.Locator.init(modules) 根据传入的module初始化路由列表
  * @默认调用外部接口: 无
  */
@@ -57,19 +57,6 @@ bui.Router = {
             }
         }
         
-        if ( typeof action == 'string' ) {        
-            action = bui.getObjectByName(action);
-        }
-        
-        if (action instanceof Function) {
-            action = new action();
-            bui.Action.map[action.id] = action;
-        }
-        
-        if ( !action || !action.enterAction ) { 
-            throw new Error('Path "'+loc+'" not exist.'); 
-        }
-        
         return action;
     },
     /**
@@ -97,14 +84,14 @@ bui.Router = {
             i, len, j, len2,
             module, actions, actionConfig, 
             pathRules = {};
-        if (!modules && bui && bui.Master && bui.Master.moduleContainer) {
-            modules = bui.Master.moduleContainer;
+        if (!modules && bui && bui.Action && bui.Action.moduleContainer) {
+            modules = bui.Action.moduleContainer;
         }
         if (modules && modules.length) {
             for ( i = 0, len = modules.length; i < len; i++) {
                 module = modules[i];
                 // 读取module的action配置
-                actions = module.config.action;
+                actions = module.action;
                 if (actions) {
                     for (j = 0, len2 = actions.length; j < len2; j++) {
                         actionConfig = actions[j];
@@ -117,6 +104,7 @@ bui.Router = {
             }
         }
     },
+  
     //错误处理
     error:function(msg){
         msg = 'error: ' + msg;

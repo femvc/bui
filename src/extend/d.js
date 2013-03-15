@@ -339,7 +339,7 @@ var _={
     /** 
      *事件绑定与解绑 
      */ 
-    bind:function(elem, eventName, handler) { 
+    on:function(elem, eventName, handler) { 
         if (elem.addEventListener) { 
             elem.addEventListener(eventName, handler, false); 
         } else if (elem.attachEvent) { 
@@ -347,7 +347,7 @@ var _={
            //此处使用回调函数call()，让 this指向elem 
         } 
     }, 
-    unbind:function(elem, eventName, handler) { 
+    off:function(elem, eventName, handler) { 
         if (elem.removeEventListener) { 
              elem.removeEventListener(eventName, handler, false); 
         } 
@@ -467,7 +467,7 @@ var _={
         return String(str).replace(/aa/ig,"aa").replace(/[ ]/ig,"%20").replace(/&/ig,"%26").replace(/;/ig,"%3B").replace(/=/ig,"%3D").replace(/\+/ig,"%2B").replace(/</ig,"%3C").replace(/>/ig,"%3E").replace(/\,/ig,"%2C").replace(/\"/ig,"%22").replace(/\'/ig,"%27").replace(/\#/ig,"%23").replace(/\//ig,"%2F").replace(/\\/ig,"%5C").replace(/\n/ig,"%0A").replace(/\r/ig,"%0D");
     },
     decode:function(str){
-                               return String(str).replace(/%20/ig," ").replace(/%26/ig,"&").replace(/%3B/ig,";").replace(/%3D/ig,"=").replace(/%2B/ig,"+").replace(/%3C/ig,"<").replace(/%3E/ig,">").replace(/%2C/ig,",").replace(/%22/ig,'\\\"').replace(/%27/ig,"\\\'").replace(/%23/ig,'#').replace(/%2F/ig,"/").replace(/%5C/ig,"\\").replace(/%0A/ig,"\n").replace(/%0D/ig,"\r").replace(/%25/ig,"%");//.replace(/%-/ig,"%");
+                               return String(str).replace(/%20/ig," ").replace(/%26/ig,"&").replace(/%3B/ig,";").replace(/%3D/ig,"=").replace(/%2B/ig,"+").replace(/%3C/ig,"<").replace(/%3E/ig,">").replace(/%2C/ig,",").replace(/%22/ig,'"').replace(/%27/ig,"'").replace(/%23/ig,'#').replace(/%2F/ig,"/").replace(/%5C/ig,"\\").replace(/%0A/ig,"\n").replace(/%0D/ig,"\r").replace(/%25/ig,"%");//.replace(/%-/ig,"%");
     },
     xss:function(str){ 
         return String(str).replace(/\</ig,"&lt;").replace(/\>/ig,"&gt;"); 

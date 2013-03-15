@@ -705,7 +705,12 @@ bui.Table.prototype = {
             if(String(parseInt('0'+m, 10)) == m && String(parseInt('0'+n, 10)) == n){
                 m = parseInt(m, 10);
                 n = parseInt(n, 10);
-            }else{
+            }
+            else if(String(parseFloat('0'+m, 10)) == m && String(parseFloat('0'+n, 10)) == n){
+                m = parseFloat(m, 10);
+                n = parseFloat(n, 10);
+            }
+            else {
                 if(m > n) { m = 1; n = -m;}
                 else if(m < n ) { m = -1; n = -m; }
                 else {m = 1; n = m;}

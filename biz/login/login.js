@@ -1,11 +1,9 @@
 'use strict';
 
 var login = {
-    config: {
-        'action': [
-            {'location':'/login','action': 'login.Signin'}
-        ]
-    }
+    action: [
+        {'location':'/login','action': 'login.Signin'}
+    ]
 };
 
 login.Signin = function(){
@@ -13,7 +11,6 @@ login.Signin = function(){
     /**
      * Action索引ID
      * 
-     * @comment bui.Action.map[action.id] = action;
      * @comment 主要用于控件中通过onclick="bui.Control.get('listTable','login');
      */
     this.id = 'login';
@@ -140,7 +137,7 @@ login.Signin.prototype = {
     }
 };
 
-bui.Master.addModule(login);
+bui.Action.addModule(login);
 //派生自 bui.Action
 //bui.Action.derive(login.Signin);
 //bui.derive(login, bui.Action);

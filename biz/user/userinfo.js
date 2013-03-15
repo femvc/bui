@@ -1,22 +1,19 @@
 'use strict';
 var user = {
-    //注: bui.Master.addModule只用到了config属性，不会使用到除config之外的任何其他属性!!
-    config: {
-        'action': [
-            {'location':'/userinfo','action':'user.Info'},
-            {'location':'/','action':'user.Info'}
-        ]
-    }
+    //注: bui.Action.addModule只用到了action属性，不会使用到除此外的任何其他属性!!
+    action: [
+        {'location':'/userinfo','action':'user.Info'},
+        {'location':'/','action':'user.Info'}
+    ]
 };
 
-bui.Master.addModule(user);
+bui.Action.addModule(user);
 
 user.Info = function(){
     bui.Action.call(this);
     /**
      * Action索引ID
      * 
-     * @comment bui.Action.map[action.id] = action;
      * @comment 主要用于控件中通过onclick="bui.Control.get('listTable','login');
      */
     this.id = 'userinfo';

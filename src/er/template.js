@@ -128,8 +128,9 @@ bui.Template = {
         var me = this;
         if(targetName == null || targetName == '') return '';
         
-        if(me.targetContainer[targetName] === undefined) 
+        if(me.targetContainer[targetName] === undefined) {
             throw new Error('Target "'+targetName+'" not exist.');
+        }
         
         return me.targetContainer[targetName];
     },

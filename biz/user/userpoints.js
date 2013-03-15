@@ -1,10 +1,8 @@
 'use strict';
 var userpoints = {
-    config:{
-        'action':[
-            {'location':'/userpoints','action':'userpoints'}
-        ]
-    },
+    action: [
+        {'location':'/userpoints','action':'userpoints'}
+    ],
     /**
      * Action索引ID
      */
@@ -102,7 +100,7 @@ var userpoints = {
     }
 };
 
-bui.Master.addModule(userpoints);
+bui.Action.addModule(userpoints);
 //派生自 bui.Action
 bui.Action.derive(userpoints);
 //bui.derive(userpoints, bui.Action);

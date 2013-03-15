@@ -13,7 +13,7 @@
  * 事件派发器，需要实现事件的类从此类继承
  */
 bui.EventDispatcher = function() {
-    this._listeners = [];
+    this._listeners = {};
 };
 bui.EventDispatcher.prototype = {
     /**
@@ -27,7 +27,20 @@ bui.EventDispatcher.prototype = {
         if (!this._listeners[eventType]) {
             this._listeners[eventType] = [];
         }
-        this._listeners[eventType].push(listener);
+        var list = this._listeners[eventType],
+            i,
+            len,
+            exist = false;
+        
+        for (i=0,len=list.length; i<len; i++) {
+            if (list[i] === listener) {
+                exist = true;
+                break;
+            }
+        }
+        if (!exist) {
+            this._listeners[eventType].push(listener);
+        }
     },
 
     /**
@@ -41,8 +54,12 @@ bui.EventDispatcher.prototype = {
         if (!this._listeners[eventType]) {
             return;
         }
-        for (var i = this._listeners[eventType].length - 1; i >= 0; i--) {
-            if (this._listeners[eventType][i] === listener) {
+        var list = this._listeners[eventType],
+            i,
+            len;
+        
+        for (i=0,len=list.length; i<len; i++) {
+            if (list[i] === listener) {
                 this._listeners[eventType].splice(i, 1);
                 break;
             }
@@ -56,7 +73,7 @@ bui.EventDispatcher.prototype = {
      *
      * @public
      */
-    clear: function() {
+    clearListener: function() {
         this._listeners = [];
     },
     /**
